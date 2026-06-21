@@ -1,0 +1,294 @@
+// ================================================
+//  LOADER — INTERSTELLAR BOOT SCREEN
+// ================================================
+
+$cyan:   #00d4ff;
+$violet: #7c3aed;
+$void:   #050816;
+$green:  #00ff88;
+
+// ── OVERLAY ──────────────────────────────────────
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    radial-gradient(ellipse at 50% 40%, #02040f 0%, #000005 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+// ── GLITCH EFFECT ────────────────────────────────
+.loader-overlay.glitch {
+  animation: glitch-shake 0.08s steps(2) 5;
+}
+
+@keyframes glitch-shake {
+  0%   { transform: translateX(0); filter: none; }
+  25%  { transform: translateX(-3px); filter: hue-rotate(90deg) brightness(1.3); }
+  50%  { transform: translateX(3px); filter: hue-rotate(-90deg); }
+  75%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); filter: none; }
+}
+
+// ── AMBIENT GLOW ─────────────────────────────────
+.ld-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba($cyan, 0.09), transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba($violet, 0.06), transparent 50%);
+  filter: blur(60px);
+  animation: ld-glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ld-glow-pulse {
+  0%,100% { opacity: 0.7; }
+  50%     { opacity: 1; }
+}
+
+// ── SCANLINES ────────────────────────────────────
+.ld-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.12) 3px,
+    rgba(0,0,0,0.12) 4px
+  );
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+// ── HUD CORNERS ──────────────────────────────────
+.ld-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: rgba($cyan, 0.5);
+  }
+  &::before { width: 100%; height: 1px; top: 0; left: 0; }
+  &::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+  &.ld-tl { top: 20px; left: 20px; }
+  &.ld-tr { top: 20px; right: 20px; transform: scaleX(-1); }
+  &.ld-bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
+  &.ld-br { bottom: 20px; right: 20px; transform: scale(-1); }
+}
+
+// ── CENTER PANEL ─────────────────────────────────
+.ld-panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: min(520px, 90vw);
+}
+
+// ── LOGO ─────────────────────────────────────────
+.ld-logo {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ld-logo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba($cyan, 0.3);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ld-ring-1 {
+  width: 90px; height: 90px;
+  border-top-color: $cyan;
+  animation: ld-spin 2s linear infinite;
+}
+
+.ld-ring-2 {
+  width: 110px; height: 110px;
+  border-right-color: rgba($violet, 0.7);
+  animation: ld-spin 3.5s linear infinite reverse;
+}
+
+@keyframes ld-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.ld-logo-core {
+  font-size: 2.2rem;
+  color: $cyan;
+  text-shadow:
+    0 0 20px rgba($cyan, 0.9),
+    0 0 50px rgba($cyan, 0.4);
+  animation: ld-core-pulse 2s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes ld-core-pulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.6; }
+}
+
+// ── TITLE ─────────────────────────────────────────
+.ld-title-wrap {
+  text-align: center;
+}
+
+.ld-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba($cyan, 0.6);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.ld-title {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #e8f4ff;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ld-blink {
+  color: $cyan;
+  animation: ld-blink 1s step-end infinite;
+}
+
+@keyframes ld-blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+
+// ── TERMINAL ──────────────────────────────────────
+.ld-terminal {
+  width: 100%;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba($cyan, 0.12);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  // Subtle inner top glow
+  box-shadow: inset 0 1px 0 rgba($cyan, 0.08);
+}
+
+.ld-line {
+  color: rgba(#7ecfd4, 0.0);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.2s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+    color: rgba(#7ecfd4, 0.65);
+  }
+
+  &.type-system { color: rgba($cyan, 0.55) !important; }
+  &.type-ok     { color: rgba($green, 0.7) !important; }
+  &.type-data   { color: rgba(#a78bfa, 0.7) !important; }
+  &.type-warn   {
+    color: $cyan !important;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba($cyan, 0.5);
+  }
+}
+
+// ── PROGRESS BAR ─────────────────────────────────
+.ld-progress-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ld-progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ld-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, $cyan, $violet);
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+.ld-progress-glow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $cyan;
+  box-shadow: 0 0 10px $cyan, 0 0 20px rgba($cyan, 0.5);
+  margin-right: -4px;
+}
+
+.ld-progress-pct {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: rgba($cyan, 0.7);
+  letter-spacing: 0.1em;
+  min-width: 36px;
+  text-align: right;
+}
+
+// ── STATUS ────────────────────────────────────────
+.ld-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba($cyan, 0.4);
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.ld-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $cyan;
+  box-shadow: 0 0 6px $cyan;
+  animation: ld-blink 1.2s ease-in-out infinite;
+}

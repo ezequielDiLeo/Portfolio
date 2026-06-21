@@ -1,0 +1,141 @@
+<section id="projects" class="projects">
+
+  <!-- <div class="prj-stars"></div> -->
+
+  <!-- HUD corners -->
+  <div class="hud-corner hud-tl"></div>
+  <div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div>
+  <div class="hud-corner hud-br"></div>
+
+  <!-- HEADING -->
+  <div class="prj-heading">
+    <span class="prj-section-tag">// INTERSTELLAR DATABASE</span>
+    <h2 class="prj-title">PROJECT MISSIONS</h2>
+    <div class="prj-title-line"></div>
+  </div>
+
+  <!-- TERMINAL LAYOUT -->
+  <div class="prj-terminal">
+
+    <!-- LEFT: mission list -->
+    <div class="prj-list">
+
+      <div class="prj-list-header">
+        <span>ID</span>
+        <span>CODENAME</span>
+        <span>STATUS</span>
+        <span>YEAR</span>
+      </div>
+
+      <div class="prj-list-divider"></div>
+
+      @for (project of projects; track project.id) {
+        <button
+          class="prj-row"
+          [class.prj-row--active]="selected().id === project.id"
+          (click)="selectProject(project)"
+          type="button"
+        >
+          <!-- Active indicator -->
+          <span class="prj-row-indicator"></span>
+
+          <span class="prj-row-id">{{ project.id }}</span>
+          <span class="prj-row-codename">{{ project.codename }}</span>
+          <span class="prj-row-status" [style.color]="statusColor(project.status)">
+            <span class="prj-status-dot" [style.background]="statusColor(project.status)" [style.box-shadow]="'0 0 6px ' + statusColor(project.status)"></span>
+            {{ project.status }}
+          </span>
+          <span class="prj-row-year">{{ project.year }}</span>
+        </button>
+      }
+
+      <div class="prj-list-footer">
+        <span>{{ projects.length }} MISSIONS LOGGED</span>
+        <span class="prj-footer-dot"></span>
+        <span>SYS ONLINE</span>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="prj-panel-divider">
+      <div class="prj-panel-divider-line"></div>
+      <div class="prj-panel-divider-pulse"></div>
+    </div>
+
+    <!-- RIGHT: detail panel -->
+    <div class="prj-detail">
+      <div class="prj-detail-inner">
+
+        <!-- Detail header -->
+        <div class="prj-detail-header">
+          <div class="prj-detail-meta">
+            <span class="prj-detail-id">{{ selected().id }}</span>
+            <span class="prj-detail-sep">/</span>
+            <span class="prj-detail-codename">{{ selected().codename }}</span>
+          </div>
+          <span
+            class="prj-detail-status"
+            [style.color]="statusColor(selected().status)"
+            [style.border-color]="statusColor(selected().status) + '44'"
+            [style.box-shadow]="'0 0 12px ' + statusColor(selected().status) + '22'"
+          >
+            ● {{ selected().status }}
+          </span>
+        </div>
+
+        <!-- Image zone -->
+        <div class="prj-img-zone">
+          <!-- Corner ticks -->
+          <div class="img-tick img-tick--tl"></div>
+          <div class="img-tick img-tick--tr"></div>
+          <div class="img-tick img-tick--bl"></div>
+          <div class="img-tick img-tick--br"></div>
+
+          <div class="prj-img-orb orb-cyan"></div>
+          <div class="prj-img-orb orb-violet"></div>
+
+          <div class="prj-scanner"></div>
+
+          <img
+            [src]="selected().image"
+            [alt]="selected().title"
+            class="prj-img"
+          />
+
+          <div class="prj-img-platform"></div>
+        </div>
+
+        <!-- Info -->
+        <h3 class="prj-detail-title">{{ selected().title }}</h3>
+        <p class="prj-detail-desc">{{ selected().details }}</p>
+
+        <!-- Stack -->
+        <div class="prj-stack-row">
+          @for (item of selected().stack; track item) {
+            <span class="prj-stack-pill">{{ item }}</span>
+          }
+        </div>
+
+        <!-- Actions -->
+        <div class="prj-actions">
+          @if (selected().link) {
+            <button class="prj-btn prj-btn--primary" (click)="openLink(selected().link)">
+              <span>ACCESS FILE</span>
+              <span class="prj-btn-arrow">→</span>
+            </button>
+          } @else {
+            <button class="prj-btn prj-btn--locked" disabled>
+              <span>◈</span>
+              <span>CLASSIFIED</span>
+            </button>
+          }
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>

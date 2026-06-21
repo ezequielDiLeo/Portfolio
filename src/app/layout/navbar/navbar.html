@@ -1,0 +1,70 @@
+<nav class="navbar">
+
+  <!-- SYSTEM STATUS -->
+  <div class="nav-status">
+    <span class="nav-status-dot"></span>
+    SYSTEM ONLINE
+    <span class="nav-status-section">
+      / {{ activeSection() | uppercase }}
+    </span>
+  </div>
+
+  <!-- NAV CORE -->
+  <div class="nav-core">
+
+    <a href="#hero"
+       class="nav-item"
+       [class.active]="activeSection() === 'hero'"
+       (click)="setActive('hero')">
+      <lucide-icon [img]="House"></lucide-icon>
+      <span class="nav-label">HOME</span>
+    </a>
+
+    <a href="#about"
+       class="nav-item"
+       [class.active]="activeSection() === 'about'"
+       (click)="setActive('about')">
+      <lucide-icon [img]="User"></lucide-icon>
+      <span class="nav-label">IDENTITY</span>
+    </a>
+
+    <a href="#skills"
+       class="nav-item"
+       [class.active]="activeSection() === 'skills'"
+       (click)="setActive('skills')">
+      <lucide-icon [img]="Brain"></lucide-icon>
+      <span class="nav-label">SKILLS</span>
+    </a>
+
+    <a href="#projects"
+       class="nav-item"
+       [class.active]="activeSection() === 'projects'"
+       (click)="setActive('projects')">
+      <lucide-icon [img]="Briefcase"></lucide-icon>
+      <span class="nav-label">MISSIONS</span>
+    </a>
+
+    <a href="#experience"
+       class="nav-item"
+       [class.active]="activeSection() === 'experience'"
+       (click)="setActive('experience')">
+      <lucide-icon [img]="ChartNetwork"></lucide-icon>
+      <span class="nav-label">DATA</span>
+    </a>
+
+    <a href="#contact"
+       class="nav-item"
+       [class.active]="activeSection() === 'contact'"
+       (click)="setActive('contact')">
+      <lucide-icon [img]="Mail"></lucide-icon>
+      <span class="nav-label">CONTACT</span>
+    </a>
+
+  </div>
+
+  <!-- ENERGY BAR -->
+  <div class="nav-energy">
+    <div class="energy-fill" [attr.data-section]="activeSection()"></div>
+  </div>
+
+</nav>

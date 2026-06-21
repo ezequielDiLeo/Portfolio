@@ -1,0 +1,301 @@
+$cyan: #00d4ff;
+$violet: #7c3aed;
+
+.experience {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0;
+  background: radial-gradient(circle at center, #02030c, #000);
+}
+
+/* BACKGROUND */
+
+.exp-bg {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 25% 25%, rgba($cyan, .08), transparent 60%),
+    radial-gradient(circle at 75% 75%, rgba($violet, .08), transparent 60%);
+
+  filter: blur(80px);
+}
+
+/* CONTAINER */
+
+.exp-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1400px, 90%);
+  margin: 0 auto;
+}
+
+/* TITLE */
+
+.exp-title {
+  text-align: center;
+  margin-bottom: 6rem;
+
+  h2 {
+    margin-top: .5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: 4px;
+    color: white;
+  }
+
+  p {
+    color: rgba(255,255,255,.5);
+  }
+}
+
+.exp-eyebrow {
+  color: $cyan;
+  font-size: .8rem;
+  letter-spacing: .25em;
+  font-family: monospace;
+}
+
+/* TIMELINE */
+
+.exp-timeline {
+  position: relative;
+}
+
+/* CENTER LINE */
+
+.exp-line {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 2px;
+  height: 100%;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba($cyan,.25),
+      rgba($violet,.25),
+      transparent
+    );
+}
+
+.exp-line-fill {
+  width: 100%;
+  height: 0%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      $cyan,
+      $violet
+    );
+
+  box-shadow:
+    0 0 20px rgba($cyan,.5);
+}
+
+/* LIST */
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ROW */
+
+.exp-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 220px;
+}
+
+.exp-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.exp-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+/* ALTERNATING SIDES */
+
+.exp-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.exp-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+/* CARD */
+
+.exp-side {
+  position: relative;
+
+  width: calc(50% - 70px);
+
+  padding: 2rem;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,.03);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  backdrop-filter: blur(20px);
+
+  transition: .35s ease;
+}
+
+.exp-side::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba($cyan,.08),
+      transparent 40%
+    );
+
+  pointer-events: none;
+}
+
+.exp-side:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba($cyan,.4);
+
+  box-shadow:
+    0 0 40px rgba($cyan,.15);
+}
+
+/* DOT */
+
+.exp-dot {
+  position: absolute;
+  left: 49.5%;
+  top: 40px;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $cyan;
+  box-shadow:
+    0 0 10px $cyan,
+    0 0 25px rgba($cyan,.6);
+
+  animation: pulseDot 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulseDot {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+/* CONTENT */
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 1rem;
+}
+
+.exp-id {
+  color: $cyan;
+
+  font-size: .75rem;
+
+  letter-spacing: 3px;
+
+  font-family: monospace;
+}
+
+.exp-status {
+  color: #00ff88;
+
+  font-size: .75rem;
+
+  text-shadow:
+    0 0 10px #00ff88;
+}
+
+.exp-company {
+  margin: 0;
+
+  font-size: 1.5rem;
+
+  color: white;
+}
+
+.exp-role {
+  margin-top: .5rem;
+
+  color: $cyan;
+
+  font-size: .95rem;
+}
+
+.exp-period {
+  margin: .8rem 0 1rem;
+
+  color: rgba(255,255,255,.45);
+
+  font-size: .8rem;
+
+  letter-spacing: 2px;
+}
+
+.exp-desc {
+  color: rgba(255,255,255,.65);
+
+  line-height: 1.8;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .exp-line {
+    left: 20px;
+  }
+
+  .exp-item {
+    justify-content: flex-end !important;
+    min-height: auto;
+  }
+
+  .exp-side {
+    width: calc(100% - 60px);
+  }
+
+  .exp-dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+}

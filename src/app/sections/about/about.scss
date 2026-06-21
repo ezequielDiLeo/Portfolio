@@ -1,0 +1,157 @@
+.about {
+  min-height: 100vh;
+  padding: 120px 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TITULO */
+.title-cont {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  color: var(--primary);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* TERMINAL */
+.terminal {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(8, 12, 25, 0.85);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.12);
+  transition: 0.3s ease;
+}
+
+.terminal:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 70px rgba(0, 212, 255, 0.18);
+}
+
+/* HEADER */
+.terminal__header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal__title {
+  margin-left: 1rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.status-indicator {
+  margin-left: auto;
+  color: #00ff88;
+  font-size: .8rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+/* BODY */
+.terminal__body {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SCAN EFFECT */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 212, 255, 0.3);
+  animation: scan 4s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* BOOT TEXT */
+.boot {
+  color: rgba(0, 212, 255, 0.7);
+  font-family: monospace;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* LINES */
+.line {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  font-family: monospace;
+  flex-wrap: wrap;
+  opacity: 0;
+}
+
+.prompt {
+  color: var(--primary);
+}
+
+.key {
+  width: 140px;
+  color: #8ab4ff;
+}
+
+.value {
+  color: #ffffff;
+}
+
+.online {
+  color: #00ff88;
+}
+
+/* CURSOR */
+.cursor {
+  width: 10px;
+  height: 18px;
+  background: var(--primary);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

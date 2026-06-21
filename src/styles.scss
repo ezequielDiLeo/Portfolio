@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+:root {
+  --bg: #050816;
+
+  --primary: #00d4ff;
+  --secondary: #7c3aed;
+
+  --text: #ffffff;
+  --muted: #94a3b8;
+
+  --glass: rgba(255,255,255,.05);
+}
+
+/* Firefox */
+html {
+  scroll-behavior: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #00f5ff #050816;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+    #050816 0%,
+    #0b1023 50%,
+    #050816 100%
+  );
+  border-left: 1px solid rgba(0, 245, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #00f5ff,
+    #6d28d9,
+    #ff00ff
+  );
+
+  border-radius: 999px;
+  border: 2px solid #050816;
+
+  box-shadow:
+    0 0 6px rgba(0, 245, 255, 0.4),
+    0 0 12px rgba(109, 40, 217, 0.3);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #67e8f9,
+    #8b5cf6,
+    #ff4dff
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 245, 255, 1),
+    0 0 24px rgba(109, 40, 217, 0.8),
+    0 0 36px rgba(255, 0, 255, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: #050816;
+}

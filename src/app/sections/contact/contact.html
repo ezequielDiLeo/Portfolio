@@ -1,0 +1,150 @@
+<section id="contact" class="contact">
+
+  <div class="contact-bg"></div>
+
+  <div class="contact-container">
+
+    <div class="contact-title">
+
+      <span class="contact-eyebrow">
+        // establish_connection
+      </span>
+
+      <h2>COMMUNICATION STATION</h2>
+
+      <p>
+        Open a secure transmission channel.
+      </p>
+
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- SIGNAL HUB -->
+
+      <div class="contact-panel signal-panel">
+
+        <div class="radar">
+          <div class="radar-sweep"></div>
+          <div class="radar-ring ring-1"></div>
+          <div class="radar-ring ring-2"></div>
+          <div class="radar-ring ring-3"></div>
+
+          <div class="radar-core"></div>
+
+        </div>
+
+        <div class="signal-links">
+
+          <a href="https://github.com/ezequielDiLeo" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/ezequiel-di-leo/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+
+          <a href="mailto:ezemr1996@gmail.com" target="_blank" rel="noopener noreferrer">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Email</span>
+          </a>
+
+          <a href="https://wa.me/5491139528929" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- TERMINAL -->
+
+      <div class="contact-terminal">
+
+        <div class="terminal-header">
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+        <div class="terminal-scanner"></div>
+
+        <form class="terminal-form" (ngSubmit)="sendMessage()">
+
+          <label>> enter_name</label>
+          <input type="text" [(ngModel)]="name" name="name" placeholder="Digital Universe">
+
+          <label>> enter_email</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="universe@gmail.com">
+
+          <label>> enter_message</label>
+          <textarea rows="6" [(ngModel)]="message" name="message" placeholder="Enter text..."></textarea>
+
+          <button type="submit" [disabled]="sending">
+            @if (!sending) {
+              TRANSMIT MESSAGE
+            }
+            @if (sending) {
+              TRANSMITTING...
+            }
+          </button>
+
+          @if (sent) {
+            <div class="terminal-success">
+              ✔ MESSAGE TRANSMITTED SUCCESSFULLY
+            </div>
+          }
+          @if (error) {
+            <div class="terminal-error">
+              ✖ TRANSMISSION FAILED
+            </div>
+          }
+
+        </form>
+
+      </div>
+
+      <!-- STATUS -->
+
+      <div class="contact-panel status-panel">
+
+        <div class="status-box">
+
+          <span>NETWORK</span>
+          <strong>ONLINE</strong>
+
+        </div>
+
+        <div class="status-box">
+
+          <span>LATENCY</span>
+          <strong>23ms</strong>
+
+        </div>
+
+        <div class="status-box">
+
+          <span>LOCATION</span>
+          <strong>ARGENTINA</strong>
+
+        </div>
+
+        <div class="status-box">
+
+          <span>RESPONSE</span>
+          <strong>< 24H</strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

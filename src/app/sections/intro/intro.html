@@ -1,0 +1,75 @@
+@if (visible()) {
+  <div #loader class="loader-overlay" [class.glitch]="glitchActive()">
+
+    <!-- HUD corners -->
+    <div class="ld-corner ld-tl"></div>
+    <div class="ld-corner ld-tr"></div>
+    <div class="ld-corner ld-bl"></div>
+    <div class="ld-corner ld-br"></div>
+
+    <!-- Ambient glow -->
+    <div class="ld-glow"></div>
+
+    <!-- CENTER PANEL -->
+    <div class="ld-panel">
+
+      <!-- Logo / icono -->
+      <div class="ld-logo">
+        <div class="ld-logo-ring ld-ring-1"></div>
+        <div class="ld-logo-ring ld-ring-2"></div>
+        <div class="ld-logo-core">◈</div>
+      </div>
+
+      <!-- Título -->
+      <div class="ld-title-wrap">
+        <span class="ld-eyebrow">// EZE.DILEO — PORTFOLIO OS</span>
+        <h1 class="ld-title">
+          SYSTEM BOOT<span class="ld-blink">_</span>
+        </h1>
+      </div>
+
+      <!-- Terminal log -->
+      <div class="ld-terminal">
+        @for (line of lines(); track $index) {
+          <div
+            class="ld-line"
+            [class.visible]="line.visible"
+            [class.type-ok]="line.type === 'ok'"
+            [class.type-data]="line.type === 'data'"
+            [class.type-warn]="line.type === 'warn'"
+            [class.type-system]="line.type === 'system'"
+          >
+            {{ line.text }}
+          </div>
+        }
+      </div>
+
+      <!-- Progress bar -->
+      <div class="ld-progress-wrap">
+        <div class="ld-progress-track">
+          <div
+            class="ld-progress-fill"
+            [style.width.%]="progress()"
+          >
+            <div class="ld-progress-glow"></div>
+          </div>
+        </div>
+
+        <span class="ld-progress-pct">
+          {{ progress() | number:'1.0-0' }}%
+        </span>
+      </div>
+
+      <!-- Status -->
+      <div class="ld-status">
+        <span class="ld-status-dot"></span>
+        <span>INITIALIZING NEURAL INTERFACE</span>
+      </div>
+
+    </div>
+
+    <!-- Scanlines overlay -->
+    <div class="ld-scanlines"></div>
+
+  </div>
+}

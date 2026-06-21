@@ -1,0 +1,56 @@
+<section id="experience" class="experience">
+  <div class="exp-bg"></div>
+  <div class="exp-container">
+
+    <!-- TITLE -->
+    <div class="exp-title">
+      <span class="exp-eyebrow">// deployment.log</span>
+      <h2>MISSION HISTORY</h2>
+      <p>Professional deployments and active assignments</p>
+    </div>
+
+    <!-- TIMELINE SYSTEM -->
+    <div class="exp-timeline">
+
+      <div class="exp-line">
+        <div class="exp-line-fill"></div>
+      </div>
+
+      <div class="exp-list">
+
+        @for(exp of experiences; track exp.role){
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-side">
+              <div class="exp-content">
+
+                <div class="exp-header">
+                  <span class="exp-id">
+                    MISSION_00{{ $index + 1 }}
+                  </span>
+                  <span class="exp-status">
+                    ACTIVE
+                  </span>
+                </div>
+                <h3 class="exp-company">{{ exp.company }}</h3>
+                <div class="exp-role">
+                  {{ exp.role }}
+                </div>
+                <div class="exp-period">
+                  {{ exp.period }}
+                </div>
+                <p class="exp-desc">
+                  {{ exp.desc }}
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
