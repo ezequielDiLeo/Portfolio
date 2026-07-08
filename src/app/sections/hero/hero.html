@@ -5,7 +5,7 @@
     <div class="hero__info">
 
       <span class="hero__badge hero-badge">
-        ◈ &nbsp; Frontend Developer
+        ◈ &nbsp;  {{ 'HERO.BADGE' | translate }}
       </span>
 
       <h1 class="hero__title hero-title">
@@ -13,29 +13,27 @@
       </h1>
 
       <h2 class="hero__subtitle hero-subtitle">
-        Deploying modern interfaces across the digital universe
+        {{'HERO.SUBTITLE' | translate}}
       </h2>
 
       <p class="hero__description hero-description">
-        Analista Programador especializado en Angular, TypeScript y Java.
-        Me enfoco en crear aplicaciones modernas, escalables y con una
-        excelente experiencia de usuario.
+        {{'HERO.DESCRIPTION' | translate}}
       </p>
 
       <div class="hero__stats">
         <div class="hero-stat">
-          <span>STATUS</span>
-          <strong>ACTIVE</strong>
+          <span>{{ 'HERO.STATS.STATUS' | translate }}</span>
+          <strong>{{ 'HERO.STATS.STATUS_VALUE' | translate }}</strong>
         </div>
 
         <div class="hero-stat">
-          <span>MISSIONS</span>
+          <span>{{ 'HERO.STATS.MISSIONS' | translate }}</span>
           <strong>15+</strong>
         </div>
 
         <div class="hero-stat">
-          <span>LOCATION</span>
-          <strong>ARG</strong>
+          <span>{{ 'HERO.STATS.LOCATION' | translate }}</span>
+          <strong>{{ 'HERO.STATS.LOCATION_VALUE' | translate }}</strong>
         </div>
       </div>
 
@@ -45,11 +43,11 @@
 
       <div class="hero__actions hero-actions">
         <button class="btn btn--primary" (click)="scrollToSection('projects')">
-          Ver proyectos
+          {{ 'HERO.BUTTONS.PROJECTS' | translate }}
         </button>
 
-        <button class="btn btn--secondary" (click)="scrollToSection('contact')">
-          Contacto
+        <button class="btn btn--secondary" (click)="scrollToSection('contact')" loading="lazy">
+          {{ 'HERO.BUTTONS.CONTACT' | translate }}
         </button>
       </div>
 
@@ -64,6 +62,7 @@
           src="/imagenMiaFuturista.png"
           alt="Ezequiel Di Leo"
           class="hero__image"
+          loading="lazy"
         />
 
       </div>

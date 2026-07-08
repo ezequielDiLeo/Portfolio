@@ -7,20 +7,19 @@
     <div class="contact-title">
 
       <span class="contact-eyebrow">
-        // establish_connection
+        {{ 'CONTACT.EYEBROW' | translate }}
       </span>
 
-      <h2>COMMUNICATION STATION</h2>
+      <h2>{{ 'CONTACT.TITLE' | translate }}</h2>
 
       <p>
-        Open a secure transmission channel.
+        {{ 'CONTACT.SUBTITLE' | translate }}
       </p>
 
     </div>
 
-    <div class="contact-grid">
 
-      <!-- SIGNAL HUB -->
+    <div class="contact-grid">
 
       <div class="contact-panel signal-panel">
 
@@ -29,29 +28,28 @@
           <div class="radar-ring ring-1"></div>
           <div class="radar-ring ring-2"></div>
           <div class="radar-ring ring-3"></div>
-
           <div class="radar-core"></div>
-
         </div>
+
 
         <div class="signal-links">
 
-          <a href="https://github.com/ezequielDiLeo" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/ezequielDiLeo" target="_blank">
             <i class="fa-brands fa-github"></i>
             <span>GitHub</span>
           </a>
 
-          <a href="https://www.linkedin.com/in/ezequiel-di-leo/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/ezequiel-di-leo/" target="_blank">
             <i class="fa-brands fa-linkedin"></i>
             <span>LinkedIn</span>
           </a>
 
-          <a href="mailto:ezemr1996@gmail.com" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:ezemr1996@gmail.com">
             <i class="fa-regular fa-envelope"></i>
             <span>Email</span>
           </a>
 
-          <a href="https://wa.me/5491139528929" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/5491139528929" target="_blank">
             <i class="fa-brands fa-whatsapp"></i>
             <span>WhatsApp</span>
           </a>
@@ -60,48 +58,72 @@
 
       </div>
 
-      <!-- TERMINAL -->
 
       <div class="contact-terminal">
 
         <div class="terminal-header">
-
           <span></span>
           <span></span>
           <span></span>
-
         </div>
+
 
         <div class="terminal-scanner"></div>
 
+
         <form class="terminal-form" (ngSubmit)="sendMessage()">
 
-          <label>> enter_name</label>
-          <input type="text" [(ngModel)]="name" name="name" placeholder="Digital Universe">
+          <label>> {{ 'CONTACT.FORM.NAME_LABEL' | translate }}</label>
 
-          <label>> enter_email</label>
-          <input type="email" [(ngModel)]="email" name="email" placeholder="universe@gmail.com">
+          <input
+            type="text"
+            [(ngModel)]="name"
+            name="name"
+            [placeholder]="'CONTACT.FORM.NAME_PLACEHOLDER' | translate">
 
-          <label>> enter_message</label>
-          <textarea rows="6" [(ngModel)]="message" name="message" placeholder="Enter text..."></textarea>
+
+          <label>> {{ 'CONTACT.FORM.EMAIL_LABEL' | translate }}</label>
+
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            [placeholder]="'CONTACT.FORM.EMAIL_PLACEHOLDER' | translate">
+
+
+          <label>> {{ 'CONTACT.FORM.MESSAGE_LABEL' | translate }}</label>
+
+          <textarea
+            rows="6"
+            [(ngModel)]="message"
+            name="message"
+            [placeholder]="'CONTACT.FORM.MESSAGE_PLACEHOLDER' | translate">
+          </textarea>
+
 
           <button type="submit" [disabled]="sending">
+
             @if (!sending) {
-              TRANSMIT MESSAGE
+              {{ 'CONTACT.FORM.SEND' | translate }}
             }
+
             @if (sending) {
-              TRANSMITTING...
+              {{ 'CONTACT.FORM.SENDING' | translate }}
             }
+
           </button>
+
 
           @if (sent) {
             <div class="terminal-success">
-              ✔ MESSAGE TRANSMITTED SUCCESSFULLY
+              ✔ {{ 'CONTACT.SUCCESS' | translate }}
             </div>
           }
+
+
           @if (error) {
             <div class="terminal-error">
-              ✖ TRANSMISSION FAILED
+              ✖ {{ 'CONTACT.ERROR' | translate }}
             </div>
           }
 
@@ -109,39 +131,31 @@
 
       </div>
 
-      <!-- STATUS -->
 
       <div class="contact-panel status-panel">
 
         <div class="status-box">
-
-          <span>NETWORK</span>
-          <strong>ONLINE</strong>
-
+          <span>{{ 'CONTACT.STATUS.NETWORK' | translate }}</span>
+          <strong>{{ 'CONTACT.STATUS.ONLINE' | translate }}</strong>
         </div>
 
         <div class="status-box">
-
-          <span>LATENCY</span>
+          <span>{{ 'CONTACT.STATUS.LATENCY' | translate }}</span>
           <strong>23ms</strong>
-
         </div>
 
         <div class="status-box">
-
-          <span>LOCATION</span>
-          <strong>ARGENTINA</strong>
-
+          <span>{{ 'CONTACT.STATUS.LOCATION' | translate }}</span>
+          <strong>{{ 'CONTACT.STATUS.COUNTRY' | translate }}</strong>
         </div>
 
         <div class="status-box">
-
-          <span>RESPONSE</span>
-          <strong>< 24H</strong>
-
+          <span>{{ 'CONTACT.STATUS.RESPONSE' | translate }}</span>
+          <strong>&lt; 24H</strong>
         </div>
 
       </div>
+
 
     </div>
 

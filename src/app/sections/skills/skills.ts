@@ -1,29 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { LanguageService } from '../../services/language';
+import { SkillNode } from '../../interfaces/interfaces';
 gsap.registerPlugin(ScrollTrigger);
-
-export interface SkillNode {
-  id: string;
-  label: string;
-  category: 'frontend' | 'backend' | 'tools';
-  level: number;
-  icon: string;
-  /** Ángulo en grados (0 = 12h, 90 = 3h, 180 = 6h, 270 = 9h) */
-  angle: number;
-  /** Factor de radio: 0 = centro, 1 = borde del sistema. Default: 0.72 */
-  radius?: number;
-}
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
 export class Skills implements AfterViewInit, OnDestroy {
 
+  // Readonly
+  readonly lang = inject(LanguageService);
+
+
+  // Lista de nodos de habilidades con sus propiedades
   nodes: SkillNode[] = [
     { id: 'n1', label: 'Angular',    category: 'frontend', level: 90, icon: 'angular',    angle:   0 },
     { id: 'n2', label: 'React',      category: 'frontend', level: 90, icon: 'react',      angle:  40 },
@@ -90,15 +86,10 @@ export class Skills implements AfterViewInit, OnDestroy {
       scrollTrigger: { ...trigger, start: 'top 72%' }
     });
 
-    // gsap.from('.sk-connector', {
-    //   opacity: 0, duration: 1.5, delay: 0.8, stagger: 0.08,
-    //   scrollTrigger: { ...trigger, start: 'top 72%' }
-    // });
-
     // Float
     document.querySelectorAll<HTMLElement>('.node-animated-wrapper').forEach((innerNode, i) => {
       gsap.to(innerNode, {
-        y: `+=${6 + i * 1.5}`, // Ahora la flotación es local y segura
+        y: `+=${6 + i * 1.5}`,
         duration: 2.2 + i * 0.3,
         repeat: -1, yoyo: true, ease: 'sine.inOut',
       });
@@ -202,9 +193,9 @@ export class Skills implements AfterViewInit, OnDestroy {
   }
 
   getLevelLabel(level: number): string {
-    if (level >= 88) return 'EXPERT';
-    if (level >= 75) return 'ADVANCED';
-    if (level >= 60) return 'INTERMEDIATE';
-    return 'PROFICIENT';
+    if (level >= 88) return this.lang.instant('SKILLS.LEVEL.EXPERT');
+    if (level >= 75) return this.lang.instant('SKILLS.LEVEL.ADVANCED');
+    if (level >= 60) return this.lang.instant('SKILLS.LEVEL.INTERMEDIATE');
+    return this.lang.instant('SKILLS.LEVEL.BASIC');
   }
 }

@@ -4,9 +4,9 @@
 
     <!-- TITLE -->
     <div class="exp-title">
-      <span class="exp-eyebrow">// deployment.log</span>
-      <h2>MISSION HISTORY</h2>
-      <p>Professional deployments and active assignments</p>
+      <span class="exp-eyebrow"> {{ 'EXPERIENCE.EYEBROW' | translate }}</span>
+      <h2> {{ 'EXPERIENCE.TITLE' | translate }} </h2>
+      <p> {{ 'EXPERIENCE.SUBTITLE' | translate }} </p>
     </div>
 
     <!-- TIMELINE SYSTEM -->
@@ -18,7 +18,7 @@
 
       <div class="exp-list">
 
-        @for(exp of experiences; track exp.role){
+        @for(exp of experiences(); track exp.company){
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-side">
@@ -26,10 +26,10 @@
 
                 <div class="exp-header">
                   <span class="exp-id">
-                    MISSION_00{{ $index + 1 }}
+                    {{ 'EXPERIENCE.MISSION' | translate }}_00{{ $index + 1 }}
                   </span>
                   <span class="exp-status">
-                    ACTIVE
+                    {{ 'EXPERIENCE.ACTIVE' | translate }}
                   </span>
                 </div>
                 <h3 class="exp-company">{{ exp.company }}</h3>

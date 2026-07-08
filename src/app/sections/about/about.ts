@@ -2,13 +2,14 @@ import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TranslatePipe } from '@ngx-translate/core';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

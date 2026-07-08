@@ -1,87 +1,106 @@
 import {
   AfterViewInit,
   Component,
+  computed,
   ElementRef,
+  inject,
   OnDestroy,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { LanguageService } from '../../services/language';
+import { Project } from '../../interfaces/interfaces';
+import { TranslatePipe } from '@ngx-translate/core';
 
 gsap.registerPlugin(ScrollTrigger);
-
-export interface Project {
-  id: string;           // MISSION_001
-  codename: string;     // nombre corto tipo callsign
-  title: string;
-  status: 'DEPLOYED' | 'ACTIVE' | 'IN PROGRESS' | 'CLASSIFIED';
-  year: string;
-  description: string;
-  details: string;      // texto más largo para el panel derecho
-  stack: string[];
-  image: string;
-  link?: string;
-}
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage, TranslatePipe],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
 export class Projects implements AfterViewInit, OnDestroy {
 
+  // Signals
   isTransitioning = false;
+  selectedId = signal<Project['id']>('MSN-001');
+
+  // Privates
   private ctx!: gsap.Context;
 
-  get projects(): Project[] { return this._projects; }
+  // Readonlys
+  readonly lang = inject(LanguageService);
+  readonly projects = computed<Project[]>(() => {
+    this.lang.currentLang();
 
-  private _projects: Project[] = [
-    {
-      id: 'MSN-001',
-      codename: 'LEXOR',
-      title: 'Legal Management System',
-      status: 'DEPLOYED',
-      year: '2024',
-      description: 'Platform for a law firm — document management, legal records and client administration.',
-      details: 'Full-stack system built for a law firm to centralize case management, automate document workflows, and track client history. Features role-based access, real-time notifications, and a reporting dashboard.',
-      stack: ['Angular', 'Java', 'TypeScript', 'SQL Server', 'PrimeNG'],
-      image: 'utreraC.webp',
-    },
-    {
-      id: 'MSN-002',
-      codename: 'RICKVERSE',
-      title: 'Rick & Morty Universe',
-      status: 'ACTIVE',
-      year: '2024',
-      description: 'Interactive experience consuming the R&M API with futuristic interfaces and animated effects.',
-      details: 'SPA that consumes the Rick & Morty public API to browse characters, episodes, and locations with a sci-fi themed interface. Includes filtering, search, infinite scroll, and character detail views.',
-      stack: ['Angular', 'SCSS', 'REST API', 'RxJS'],
-      image: 'rymPage.webp',
-      link: 'https://rym-page.vercel.app/intro'
-    },
-    {
-      id: 'MSN-003',
-      codename: 'STELLAR',
-      title: 'Interstellar Portfolio',
-      status: 'IN PROGRESS',
-      year: '2025',
-      description: 'Immersive portfolio inspired by futuristic OS, black holes and sci-fi experiences.',
-      details: 'This very portfolio — an immersive, animated personal site built with Angular, GSAP ScrollTrigger and (soon) Three.js. Every section is a different "module" of a starship interface.',
-      stack: ['Angular', 'GSAP', 'Three.js', 'SCSS'],
-      image: 'portfolio.webp',
-    },
-  ];
+    return [
+      {
+        id: 'MSN-001',
+        codename: 'LEXOR',
+        title: this.lang.instant('PROJECTS.ITEMS.LEXOR.TITLE'),
+        status: 'DEPLOYED',
+        year: '2024',
+        description: this.lang.instant('PROJECTS.ITEMS.LEXOR.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.LEXOR.DETAILS'),
+        stack: ['Angular', 'Java', 'TypeScript', 'SQL Server', 'PrimeNG'],
+        image: 'utreraC.webp',
+      },
+      {
+        id: 'MSN-002',
+        codename: 'RICKVERSE',
+        title: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.TITLE'),
+        status: 'ACTIVE',
+        year: '2024',
+        description: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DETAILS'),
+        stack: ['Angular', 'SCSS', 'REST API', 'RxJS'],
+        image: 'rymPage.webp',
+        link: 'https://rym-page.vercel.app/intro'
+      },
+      {
+        id: 'MSN-003',
+        codename: 'STELLAR',
+        title: this.lang.instant('PROJECTS.ITEMS.STELLAR.TITLE'),
+        status: 'IN PROGRESS',
+        year: '2025',
+        description: this.lang.instant('PROJECTS.ITEMS.STELLAR.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.STELLAR.DETAILS'),
+        stack: ['Angular', 'GSAP', 'Three.js', 'SCSS'],
+        image: 'portfolio.webp',
+      },
+      {
+        id: 'MSN-004',
+        codename: 'NOVA',
+        title: this.lang.instant('PROJECTS.ITEMS.NOVA.TITLE'),
+        status: 'DEPLOYED',
+        year: '2025',
+        description: this.lang.instant('PROJECTS.ITEMS.NOVA.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.NOVA.DETAILS'),
+        stack: ['React', 'CSS', 'JavaScript', 'Responsive Design'],
+        image: null,
+        link: 'https://clothingcye.netlify.app/'
+      }
+    ];
+  });
 
-  selected = signal<Project>(this.projects[0]);
+  readonly selected = computed(() => {
+    return (
+      this.projects().find(p => p.id === this.selectedId()) ??
+      this.projects()[0]
+    );
+  });
+
+
+  // Constructor
   constructor(private el: ElementRef) {}
 
+  // Lifecycle hooks
   ngAfterViewInit(): void {
     this.ctx = gsap.context(() => {
-
-      // Section entrance
       gsap.from('.prj-section-tag', {
         opacity: 0, y: 20, duration: 0.8, ease: 'power2.out',
         scrollTrigger: { trigger: '.projects', start: 'top 80%', once: true },
@@ -97,7 +116,6 @@ export class Projects implements AfterViewInit, OnDestroy {
 
     }, this.el.nativeElement);
 
-    // Initial detail panel boot animation
     setTimeout(() => this.bootDetailPanel(), 400);
   }
 
@@ -105,27 +123,37 @@ export class Projects implements AfterViewInit, OnDestroy {
     this.ctx?.revert();
   }
 
+  // Methods
   selectProject(project: Project): void {
-    if (this.isTransitioning || project.id === this.selected().id) return;
+    if (this.isTransitioning || project.id === this.selected().id) {
+      return;
+    }
+
     this.isTransitioning = true;
-
-    const panel = (this.el.nativeElement as HTMLElement)
-      .querySelector('.prj-detail-inner') as HTMLElement;
-
-    // Exit current
+    const panel = this.el.nativeElement.querySelector('.prj-detail-inner');
     gsap.to(panel, {
-      opacity: 0, x: 16, duration: 0.22, ease: 'power2.in',
+      opacity: 0,
+      x: 16,
+      duration: .22,
+      ease: 'power2.in',
       onComplete: () => {
-        this.selected.set(project);
-        // Enter new
-        gsap.fromTo(panel,
-          { opacity: 0, x: -16 },
+        this.selectedId.set(project.id);
+
+        gsap.fromTo(
+          panel,
           {
-            opacity: 1, x: 0, duration: 0.35, ease: 'power2.out',
-            onComplete: () => { this.isTransitioning = false; },
+            opacity: 0,
+            x: -16
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: .35,
+            ease: 'power2.out',
+            onComplete: () => this.isTransitioning = false
           }
         );
-      },
+      }
     });
   }
 

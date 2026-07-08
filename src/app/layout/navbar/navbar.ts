@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, signal } from '@angular/core';
+import { AfterViewInit, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   LucideAngularModule,
@@ -9,6 +9,7 @@ import {
   ChartNetwork,
   Mail
 } from 'lucide-angular';
+import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,10 @@ import {
 })
 export class Navbar implements AfterViewInit {
 
+  // Language
+  lang = inject(LanguageService);
+
+  // Icons
   readonly House = House;
   readonly User = User;
   readonly Brain = Brain;

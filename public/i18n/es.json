@@ -1,0 +1,202 @@
+{
+  "NAVBAR": {
+    "HOME": "INICIO",
+    "IDENTITY": "SOBRE MÍ",
+    "SKILLS": "HABILIDADES",
+    "PROJECTS": "PROYECTOS",
+    "EXPERIENCE": "EXPERIENCIA",
+    "CONTACT": "CONTACTO"
+  },
+
+  "HERO": {
+    "BADGE": "Frontend Developer",
+    "SUBTITLE": "Desplegando interfaces modernas en el universo digital",
+    "DESCRIPTION": "Analista Programador especializado en Angular, TypeScript y Java. Me enfoco en crear aplicaciones modernas, escalables y con una excelente experiencia de usuario.",
+    "STATS": {
+      "STATUS": "ESTADO",
+      "STATUS_VALUE": "ACTIVO",
+      "MISSIONS": "MISIONES",
+      "LOCATION": "UBICACIÓN",
+      "LOCATION_VALUE": "ARG"
+    },
+    "BUTTONS": {
+      "PROJECTS": "Ver proyectos",
+      "CONTACT": "Contacto"
+    }
+  },
+
+  "ABOUT": {
+    "TITLE": "SYSTEM CORE",
+    "SUBTITLE": "Módulo de identidad • perfil del sistema en vivo",
+
+    "TERMINAL": {
+      "INIT": "[ INICIALIZANDO PERFIL DE USUARIO... ]",
+
+      "NAME": {
+        "KEY": "nombre",
+        "VALUE": "Ezequiel Di Leo"
+      },
+
+      "ROLE": {
+        "KEY": "rol",
+        "VALUE": "Frontend Developer"
+      },
+
+      "COMPANY": {
+        "KEY": "empresa",
+        "VALUE": "ABSTI Systems"
+      },
+
+      "STACK": {
+        "KEY": "stack",
+        "VALUE": "Angular • GSAP • TS • Java • SCSS"
+      },
+
+      "FOCUS": {
+        "KEY": "enfoque",
+        "VALUE": "Arquitectura UI/UX & Motion Systems"
+      },
+
+      "STATUS": {
+        "KEY": "estado",
+        "VALUE": "DISPONIBLE"
+      }
+    }
+  },
+
+  "SKILLS": {
+    "EYEBROW": "// neural.modules — v2.0.4",
+    "TITLE_PART_1": "SISTEMA",
+    "TITLE_PART_2": "INTERESTELAR",
+    "SUBTITLE": "Módulos neuronales sincronizados · Todos los sistemas operativos",
+
+    "STATUS": {
+      "ONLINE": "ONLINE",
+      "MODULES": "MÓDULOS",
+      "CORE_SYNC": "SINCRONIZACIÓN 100%"
+    },
+
+    "BOTTOM": {
+      "MODULES": "módulos",
+      "CATEGORIES": "categorías",
+      "STATUS": "estado"
+    },
+
+    "LEVEL": {
+      "EXPERT": "Experto",
+      "ADVANCED": "Avanzado",
+      "INTERMEDIATE": "Intermedio",
+      "BASIC": "Básico"
+    }
+  },
+
+  "PROJECTS": {
+    "SECTION_TAG": "// BASE DE DATOS INTERESTELAR",
+    "TITLE": "MISIONES",
+    "LIST": {
+      "ID": "ID",
+      "CODENAME": "CODENAME",
+      "STATUS": "ESTADO",
+      "YEAR": "AÑO",
+      "MISSIONS_LOGGED": "MISIONES REGISTRADAS",
+      "SYSTEM_ONLINE": "SISTEMA ONLINE"
+    },
+    "DETAIL": {
+      "CLASSIFIED_IMAGE": "La imagen de este proyecto es clasificada.",
+      "ACCESS_FILE": "ACCEDER AL PROYECTO",
+      "CLASSIFIED": "CLASIFICADO"
+    },
+    "STATUS": {
+      "DEPLOYED": "DESPLEGADO",
+      "ACTIVE": "ACTIVO",
+      "IN_PROGRESS": "EN DESARROLLO",
+      "CLASSIFIED": "CLASIFICADO"
+    },
+    "ITEMS": {
+      "LEXOR": {
+        "TITLE": "Sistema de Gestión Jurídica",
+        "DESCRIPTION": "Plataforma para un estudio jurídico: gestión documental, expedientes y administración de clientes.",
+        "DETAILS": "Sistema Full Stack desarrollado para un estudio jurídico que centraliza la gestión de expedientes, automatiza el flujo de documentos y permite administrar clientes. Incluye control de roles, notificaciones y paneles de reportes."
+      },
+      "RICKVERSE": {
+        "TITLE": "Universo Rick & Morty",
+        "DESCRIPTION": "Experiencia interactiva consumiendo la API de Rick & Morty con una interfaz futurista y animaciones.",
+        "DETAILS": "SPA que consume la API pública de Rick & Morty para explorar personajes, episodios y ubicaciones. Incluye búsqueda, filtros, scroll infinito y una interfaz inspirada en la ciencia ficción."
+      },
+      "STELLAR": {
+        "TITLE": "Portfolio Interestelar",
+        "DESCRIPTION": "Portfolio inmersivo inspirado en sistemas operativos futuristas, agujeros negros y experiencias sci-fi.",
+        "DETAILS": "Este mismo portfolio. Un sitio personal desarrollado con Angular, GSAP ScrollTrigger y próximamente Three.js. Cada sección representa un módulo de una nave espacial."
+      },
+      "NOVA": {
+        "TITLE": "Estación Orbital de Moda",
+        "DESCRIPTION": "Terminal futurista para explorar colecciones mediante una experiencia inmersiva.",
+        "DETAILS": "Proyecto Frontend que reinventa una tienda online como una estación comercial orbital. Desarrollado con Angular y GSAP, incorpora animaciones fluidas, diseño responsive y una experiencia inspirada en sistemas operativos de naves espaciales."
+      }
+    }
+  },
+
+  "EXPERIENCE": {
+    "EYEBROW": "// deployment.log",
+    "TITLE": "HISTORIAL DE MISIONES",
+    "SUBTITLE": "Despliegues profesionales y asignaciones activas",
+
+    "MISSION": "MISIÓN",
+    "ACTIVE": "ACTIVO",
+
+    "ITEMS": {
+      "ABSTI": {
+        "COMPANY": "ABSTI",
+        "ROLE": "Analista Programador",
+        "PERIOD": "2024 — ACTUALIDAD",
+        "DESCRIPTION": "Desarrollo de soluciones empresariales para los sectores financiero, seguros y logística. Trabajo con Angular, React, Java y SQL Server."
+      },
+
+      "LEGAL": {
+        "COMPANY": "Sistemas de Gestión Jurídica",
+        "ROLE": "Desarrollador Freelance",
+        "PERIOD": "2023 — 2024",
+        "DESCRIPTION": "Diseño e implementación de plataformas de gestión documental jurídica, paneles administrativos y herramientas internas."
+      },
+
+      "PERSONAL": {
+        "COMPANY": "Proyectos Personales",
+        "ROLE": "Trayectoria en Desarrollo Frontend",
+        "PERIOD": "2022 — 2023",
+        "DESCRIPTION": "Creación de interfaces experimentales, integraciones con APIs, portfolios y arquitecturas modernas de frontend."
+      }
+    }
+  },
+
+  "CONTACT": {
+    "EYEBROW": "// establecer_conexion",
+    "TITLE": "ESTACIÓN DE COMUNICACIÓN",
+    "SUBTITLE": "Abre un canal de transmisión seguro.",
+
+    "FORM": {
+      "NAME_LABEL": "ingresar_nombre",
+      "EMAIL_LABEL": "ingresar_email",
+      "MESSAGE_LABEL": "ingresar_mensaje",
+
+      "NAME_PLACEHOLDER": "Universo Digital",
+      "EMAIL_PLACEHOLDER": "universo@gmail.com",
+      "MESSAGE_PLACEHOLDER": "Escribe un mensaje...",
+
+      "SEND": "TRANSMITIR MENSAJE",
+      "SENDING": "TRANSMITIENDO..."
+    },
+
+    "SUCCESS": "MENSAJE TRANSMITIDO CORRECTAMENTE",
+    "ERROR": "FALLÓ LA TRANSMISIÓN",
+
+    "STATUS": {
+      "NETWORK": "RED",
+      "ONLINE": "EN LÍNEA",
+      "LATENCY": "LATENCIA",
+      "LOCATION": "UBICACIÓN",
+      "COUNTRY": "ARGENTINA",
+      "RESPONSE": "RESPUESTA"
+    }
+  }
+}
+

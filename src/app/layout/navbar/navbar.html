@@ -17,7 +17,7 @@
        [class.active]="activeSection() === 'hero'"
        (click)="setActive('hero')">
       <lucide-icon [img]="House"></lucide-icon>
-      <span class="nav-label">HOME</span>
+      <span class="nav-label"> {{lang.instant('NAVBAR.HOME')}}</span>
     </a>
 
     <a href="#about"
@@ -25,7 +25,7 @@
        [class.active]="activeSection() === 'about'"
        (click)="setActive('about')">
       <lucide-icon [img]="User"></lucide-icon>
-      <span class="nav-label">IDENTITY</span>
+      <span class="nav-label">{{lang.instant('NAVBAR.IDENTITY')}}</span>
     </a>
 
     <a href="#skills"
@@ -33,7 +33,7 @@
        [class.active]="activeSection() === 'skills'"
        (click)="setActive('skills')">
       <lucide-icon [img]="Brain"></lucide-icon>
-      <span class="nav-label">SKILLS</span>
+      <span class="nav-label">{{lang.instant('NAVBAR.SKILLS')}}</span>
     </a>
 
     <a href="#projects"
@@ -41,7 +41,7 @@
        [class.active]="activeSection() === 'projects'"
        (click)="setActive('projects')">
       <lucide-icon [img]="Briefcase"></lucide-icon>
-      <span class="nav-label">MISSIONS</span>
+      <span class="nav-label">{{lang.instant('NAVBAR.PROJECTS')}}</span>
     </a>
 
     <a href="#experience"
@@ -49,7 +49,7 @@
        [class.active]="activeSection() === 'experience'"
        (click)="setActive('experience')">
       <lucide-icon [img]="ChartNetwork"></lucide-icon>
-      <span class="nav-label">DATA</span>
+      <span class="nav-label">{{lang.instant('NAVBAR.EXPERIENCE')}}</span>
     </a>
 
     <a href="#contact"
@@ -57,8 +57,18 @@
        [class.active]="activeSection() === 'contact'"
        (click)="setActive('contact')">
       <lucide-icon [img]="Mail"></lucide-icon>
-      <span class="nav-label">CONTACT</span>
+      <span class="nav-label">{{lang.instant('NAVBAR.CONTACT')}}</span>
     </a>
+
+    <button class="lang-switch" (click)="lang.toggleLang()">
+  <span class="lang-code">
+    {{ lang.currentLang() === 'es' ? 'ES' : 'EN' }}
+  </span>
+
+  <span class="nav-label">
+    {{ lang.currentLang() === 'es' ? 'English' : 'Español' }}
+  </span>
+</button>
 
   </div>
 
