@@ -10,8 +10,8 @@
 
   <!-- HEADING -->
   <div class="prj-heading">
-    <span class="prj-section-tag">// INTERSTELLAR DATABASE</span>
-    <h2 class="prj-title">PROJECT MISSIONS</h2>
+    <span class="prj-section-tag">{{ 'PROJECTS.SECTION_TAG' | translate }}</span>
+    <h2 class="prj-title">{{ 'PROJECTS.TITLE' | translate }}</h2>
     <div class="prj-title-line"></div>
   </div>
 
@@ -22,15 +22,15 @@
     <div class="prj-list">
 
       <div class="prj-list-header">
-        <span>ID</span>
-        <span>CODENAME</span>
-        <span>STATUS</span>
-        <span>YEAR</span>
+        <span>{{ 'PROJECTS.LIST.ID' | translate }}</span>
+        <span>{{ 'PROJECTS.LIST.CODENAME' | translate }}</span>
+        <span>{{ 'PROJECTS.LIST.STATUS' | translate }}</span>
+        <span>{{ 'PROJECTS.LIST.YEAR' | translate }}</span>
       </div>
 
       <div class="prj-list-divider"></div>
 
-      @for (project of projects; track project.id) {
+      @for (project of projects(); track project.id) {
         <button
           class="prj-row"
           [class.prj-row--active]="selected().id === project.id"
@@ -51,7 +51,7 @@
       }
 
       <div class="prj-list-footer">
-        <span>{{ projects.length }} MISSIONS LOGGED</span>
+        <span>{{ projects().length }} MISSIONS LOGGED</span>
         <span class="prj-footer-dot"></span>
         <span>SYS ONLINE</span>
       </div>
@@ -81,7 +81,7 @@
             [style.border-color]="statusColor(selected().status) + '44'"
             [style.box-shadow]="'0 0 12px ' + statusColor(selected().status) + '22'"
           >
-            ● {{ selected().status }}
+            ● {{ selected()!.status }}
           </span>
         </div>
 
@@ -97,12 +97,20 @@
           <div class="prj-img-orb orb-violet"></div>
 
           <div class="prj-scanner"></div>
-
-          <img
-            [src]="selected().image"
-            [alt]="selected().title"
-            class="prj-img"
-          />
+          @if (selected()!.image) {
+            <img
+              [ngSrc]="selected()!.image!"
+              width="900"
+              height="600"
+              class="prj-img"
+              [alt]="selected()!.title"
+              loading="lazy">
+          } @else {
+            <div class="classified-image">
+              <i class="fa-solid fa-lock"></i>
+              <p>La imagen de este proyecto es clasificada.</p>
+            </div>
+          }
 
           <div class="prj-img-platform"></div>
         </div>
@@ -121,14 +129,14 @@
         <!-- Actions -->
         <div class="prj-actions">
           @if (selected().link) {
-            <button class="prj-btn prj-btn--primary" (click)="openLink(selected().link)">
+            <button class="prj-btn prj-btn--primary" (click)="openLink(selected().link)" aria-label="Open project link">
               <span>ACCESS FILE</span>
               <span class="prj-btn-arrow">→</span>
             </button>
           } @else {
-            <button class="prj-btn prj-btn--locked" disabled>
+            <button class="prj-btn prj-btn--locked" disabled aria-label="Project link is classified">
               <span>◈</span>
-              <span>CLASSIFIED</span>
+              <span>{{ 'PROJECTS.STATUS.CLASSIFIED' | translate }}</span>
             </button>
           }
         </div>

@@ -5,12 +5,13 @@ import gsap from 'gsap';
 import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
+import { TranslatePipe } from '@ngx-translate/core';
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })

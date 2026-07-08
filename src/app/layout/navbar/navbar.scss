@@ -28,7 +28,6 @@
   letter-spacing: 0.18em;
   font-family: monospace;
   color: rgba(255,255,255,0.5);
-
   display: flex;
   align-items: center;
   gap: 8px;
@@ -152,6 +151,64 @@
 .energy-fill[data-section="projects"] { width: 70%; }
 .energy-fill[data-section="experience"] { width: 85%; }
 .energy-fill[data-section="contact"] { width: 100%; }
+
+
+.lang-switch {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    color: #00d4ff;
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.96);
+  }
+}
+
+.lang-code {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: inherit;
+}
+
+.lang-switch .nav-label {
+  font-size: 8px;
+  margin-top: 4px;
+  letter-spacing: 0.12em;
+
+  opacity: 0;
+  transform: translateY(4px);
+
+  color: inherit;
+
+  transition: all 0.2s ease;
+}
+
+.lang-switch:hover .nav-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* MOBILE */
 @media (max-width: 768px) {

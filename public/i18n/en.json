@@ -1,0 +1,198 @@
+{
+  "NAVBAR": {
+    "HOME": "HOME",
+    "IDENTITY": "ABOUT",
+    "SKILLS": "SKILLS",
+    "PROJECTS": "PROJECTS",
+    "EXPERIENCE": "EXPERIENCE",
+    "CONTACT": "CONTACT"
+  },
+  "HERO": {
+    "BADGE": "Frontend Developer",
+    "SUBTITLE": "Deploying modern interfaces across the digital universe",
+    "DESCRIPTION": "Software Developer specialized in Angular, TypeScript and Java. I focus on building modern, scalable applications with excellent user experience.",
+    "STATS": {
+      "STATUS": "STATUS",
+      "STATUS_VALUE": "ACTIVE",
+      "MISSIONS": "MISSIONS",
+      "LOCATION": "LOCATION",
+      "LOCATION_VALUE": "ARG"
+    },
+    "BUTTONS": {
+      "PROJECTS": "View projects",
+      "CONTACT": "Contact"
+    }
+  },
+  "ABOUT": {
+    "TITLE": "SYSTEM CORE",
+    "SUBTITLE": "Identity module • live system profile",
+
+    "TERMINAL": {
+      "INIT": "[ INITIALIZING USER PROFILE... ]",
+
+      "NAME": {
+        "KEY": "name",
+        "VALUE": "Ezequiel Di Leo"
+      },
+
+      "ROLE": {
+        "KEY": "role",
+        "VALUE": "Frontend Developer"
+      },
+
+      "COMPANY": {
+        "KEY": "company",
+        "VALUE": "ABSTI Systems"
+      },
+
+      "STACK": {
+        "KEY": "stack",
+        "VALUE": "Angular • GSAP • TS • Java • SCSS"
+      },
+
+      "FOCUS": {
+        "KEY": "focus",
+        "VALUE": "UI/UX Architecture & Motion Systems"
+      },
+
+      "STATUS": {
+        "KEY": "status",
+        "VALUE": "AVAILABLE"
+      }
+    }
+  },
+  "SKILLS": {
+    "EYEBROW": "// neural.modules — v2.0.4",
+    "TITLE_PART_1": "INTERSTELLAR",
+    "TITLE_PART_2": "SYSTEM",
+    "SUBTITLE": "Neural modules synchronized · All systems operational",
+
+    "STATUS": {
+      "ONLINE": "ONLINE",
+      "MODULES": "MODULES",
+      "CORE_SYNC": "CORE SYNC 100%"
+    },
+
+    "BOTTOM": {
+      "MODULES": "modules",
+      "CATEGORIES": "categories",
+      "STATUS": "status"
+    },
+
+    "LEVEL": {
+      "EXPERT": "Expert",
+      "ADVANCED": "Advanced",
+      "INTERMEDIATE": "Intermediate",
+      "BASIC": "Basic"
+    }
+  },
+
+  "PROJECTS": {
+    "SECTION_TAG": "// INTERSTELLAR DATABASE",
+    "TITLE": "PROJECT MISSIONS",
+    "LIST": {
+      "ID": "ID",
+      "CODENAME": "CODENAME",
+      "STATUS": "STATUS",
+      "YEAR": "YEAR",
+      "MISSIONS_LOGGED": "MISSIONS LOGGED",
+      "SYSTEM_ONLINE": "SYSTEM ONLINE"
+    },
+    "DETAIL": {
+      "CLASSIFIED_IMAGE": "This project's image is classified.",
+      "ACCESS_FILE": "ACCESS PROJECT",
+      "CLASSIFIED": "CLASSIFIED"
+    },
+    "STATUS": {
+      "DEPLOYED": "DEPLOYED",
+      "ACTIVE": "ACTIVE",
+      "IN_PROGRESS": "IN PROGRESS",
+      "CLASSIFIED": "CLASSIFIED"
+    },
+    "ITEMS": {
+      "LEXOR": {
+        "TITLE": "Legal Management System",
+        "DESCRIPTION": "Platform for a law firm featuring document management, legal records and client administration.",
+        "DETAILS": "Full-stack system built for a law firm to centralize case management, automate document workflows and manage clients. Includes role-based access, notifications and reporting dashboards."
+      },
+      "RICKVERSE": {
+        "TITLE": "Rick & Morty Universe",
+        "DESCRIPTION": "Interactive experience consuming the Rick & Morty API with futuristic interfaces and animations.",
+        "DETAILS": "SPA consuming the Rick & Morty public API to browse characters, episodes and locations. Features search, filters, infinite scroll and a sci-fi inspired interface."
+      },
+      "STELLAR": {
+        "TITLE": "Interstellar Portfolio",
+        "DESCRIPTION": "Immersive portfolio inspired by futuristic operating systems, black holes and sci-fi experiences.",
+        "DETAILS": "This very portfolio. An animated personal website built with Angular, GSAP ScrollTrigger and soon Three.js. Every section represents a different starship module."
+      },
+      "NOVA": {
+        "TITLE": "Orbital Apparel Station",
+        "DESCRIPTION": "Futuristic fashion terminal designed to explore collections through an immersive experience.",
+        "DETAILS": "Frontend project that reimagines an online clothing store as an orbital commerce station. Built with Angular and GSAP, featuring smooth animations, responsive layouts and a futuristic user experience."
+      }
+    }
+  },
+
+  "EXPERIENCE": {
+    "EYEBROW": "// deployment.log",
+    "TITLE": "MISSION HISTORY",
+    "SUBTITLE": "Professional deployments and active assignments",
+
+    "MISSION": "MISSION",
+    "ACTIVE": "ACTIVE",
+
+    "ITEMS": {
+      "ABSTI": {
+        "COMPANY": "ABSTI",
+        "ROLE": "Systems Programmer",
+        "PERIOD": "2024 — PRESENT",
+        "DESCRIPTION": "Development of enterprise software solutions for financial, insurance and logistics sectors. Working with Angular, React, Java and SQL Server environments."
+      },
+
+      "LEGAL": {
+        "COMPANY": "Legal Management Systems",
+        "ROLE": "Freelance Developer",
+        "PERIOD": "2023 — 2024",
+        "DESCRIPTION": "Design and implementation of legal document management platforms, internal dashboards and administrative tools."
+      },
+
+      "PERSONAL": {
+        "COMPANY": "Independent Projects",
+        "ROLE": "Frontend Development Journey",
+        "PERIOD": "2022 — 2023",
+        "DESCRIPTION": "Creation of experimental interfaces, API integrations, portfolio systems and modern frontend architectures."
+      }
+    }
+  },
+
+  "CONTACT": {
+    "EYEBROW": "// establish_connection",
+    "TITLE": "COMMUNICATION STATION",
+    "SUBTITLE": "Open a secure transmission channel.",
+
+    "FORM": {
+      "NAME_LABEL": "enter_name",
+      "EMAIL_LABEL": "enter_email",
+      "MESSAGE_LABEL": "enter_message",
+
+      "NAME_PLACEHOLDER": "Digital Universe",
+      "EMAIL_PLACEHOLDER": "universe@gmail.com",
+      "MESSAGE_PLACEHOLDER": "Enter text...",
+
+      "SEND": "TRANSMIT MESSAGE",
+      "SENDING": "TRANSMITTING..."
+    },
+
+    "SUCCESS": "MESSAGE TRANSMITTED SUCCESSFULLY",
+    "ERROR": "TRANSMISSION FAILED",
+
+    "STATUS": {
+      "NETWORK": "NETWORK",
+      "ONLINE": "ONLINE",
+      "LATENCY": "LATENCY",
+      "LOCATION": "LOCATION",
+      "COUNTRY": "ARGENTINA",
+      "RESPONSE": "RESPONSE"
+    }
+  }
+}

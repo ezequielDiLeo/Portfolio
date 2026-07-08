@@ -9,13 +9,7 @@ import {
 } from '@angular/core';
 
 import { gsap } from 'gsap';
-
-interface LogLine {
-  text: string;
-  type: 'system' | 'ok' | 'data' | 'warn';
-  visible: boolean;
-}
-
+import { LogLine } from '../../interfaces/interfaces';
 @Component({
   selector: 'app-intro',
   standalone: true,

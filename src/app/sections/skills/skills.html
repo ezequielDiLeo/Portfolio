@@ -12,18 +12,18 @@
 
     <!-- TITLE -->
     <div class="sk-title-wrap">
-      <span class="sk-eyebrow">// neural.modules — v2.0.4</span>
+      <span class="sk-eyebrow">{{ 'SKILLS.EYEBROW' | translate }}</span>
       <div class="sk-title-inner">
-        <h2 class="sk-title">INTERSTELLAR<span class="sk-title-accent"> SYSTEM</span></h2>
+        <h2 class="sk-title">{{ 'SKILLS.TITLE_PART_1' | translate }}<span class="sk-title-accent"> {{ 'SKILLS.TITLE_PART_2' | translate }}</span></h2>
         <div class="sk-scanline"></div>
       </div>
-      <p class="sk-subtitle">Neural modules synchronized · All systems operational</p>
+      <p class="sk-subtitle">{{ 'SKILLS.SUBTITLE' | translate }}</p>
       <div class="sk-status-row">
         <span class="sk-dot active"></span> ONLINE
         <span class="sk-separator">|</span>
-        <span class="sk-dot"></span> {{ nodes.length }} MODULES
+        <span class="sk-dot"></span> {{ nodes.length }} {{ 'SKILLS.STATUS.MODULES' | translate }}
         <span class="sk-separator">|</span>
-        <span class="sk-dot"></span> CORE SYNC 100%
+        <span class="sk-dot"></span> {{ 'SKILLS.STATUS.CORE_SYNC' | translate }}
       </div>
     </div>
 
@@ -110,11 +110,11 @@
 
     <!-- BOTTOM STATUS BAR -->
     <div class="sk-statusbar">
-      <span class="sk-stat"><span class="sk-stat-val">{{ nodes.length }}</span> modules</span>
+      <span class="sk-stat"><span class="sk-stat-val">{{ nodes.length }}</span> {{ 'SKILLS.BOTTOM.MODULES' | translate }}</span>
       <span class="sk-divider">////</span>
-      <span class="sk-stat"><span class="sk-stat-val">3</span> categories</span>
+      <span class="sk-stat"><span class="sk-stat-val">3</span> {{ 'SKILLS.BOTTOM.CATEGORIES' | translate }}</span>
       <span class="sk-divider">////</span>
-      <span class="sk-stat">status <span class="sk-stat-val online">ONLINE</span></span>
+      <span class="sk-stat">{{ 'SKILLS.BOTTOM.STATUS' | translate }} <span class="sk-stat-val online">ONLINE</span></span>
     </div>
 
   </div>
