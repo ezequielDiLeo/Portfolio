@@ -149,21 +149,21 @@
         "COMPANY": "ABSTI",
         "ROLE": "Analista Programador",
         "PERIOD": "2024 — ACTUALIDAD",
-        "DESCRIPTION": "Desarrollo de soluciones empresariales para los sectores financiero, seguros y logística. Trabajo con Angular, React, Java y SQL Server."
+        "DESCRIPTION": "Contribuyendo al desarrollo y mantenimiento de aplicaciones empresariales utilizadas en los sectores financiero, asegurador y logístico. Trabajando tanto en frontend como en backend con **Angular**, **React**, **Java**, **SQL Server**, APIs REST y soluciones de generación de reportes para desarrollar software escalable, confiable y orientado a las necesidades del negocio."
       },
 
       "LEGAL": {
         "COMPANY": "Sistemas de Gestión Jurídica",
         "ROLE": "Desarrollador Freelance",
-        "PERIOD": "2023 — 2024",
-        "DESCRIPTION": "Diseño e implementación de plataformas de gestión documental jurídica, paneles administrativos y herramientas internas."
+        "PERIOD": "2025 — ACTUALIDAD",
+        "DESCRIPTION": "Sitio web profesional diseñado y desarrollado para un estudio jurídico, enfocado en transmitir confianza, presentar sus servicios legales y mejorar la comunicación con potenciales clientes. Cuenta con una interfaz moderna y adaptable, rendimiento optimizado, presentación clara de servicios y opciones de contacto intuitivas para fortalecer la presencia digital del estudio."
       },
 
       "PERSONAL": {
         "COMPANY": "Proyectos Personales",
         "ROLE": "Trayectoria en Desarrollo Frontend",
         "PERIOD": "2022 — 2023",
-        "DESCRIPTION": "Creación de interfaces experimentales, integraciones con APIs, portfolios y arquitecturas modernas de frontend."
+        "DESCRIPTION": "Diseño y desarrollo de proyectos personales para explorar tecnologías web modernas y fortalecer mis habilidades como desarrollador full stack. Enfocado en crear aplicaciones responsivas, de alto rendimiento y con una arquitectura limpia, priorizando la experiencia de usuario y soluciones escalables utilizando tecnologías como **Angular**, **React**, **TypeScript**, **Java** y las mejores prácticas del desarrollo web."
       }
     }
   },
