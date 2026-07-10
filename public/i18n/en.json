@@ -146,21 +146,21 @@
         "COMPANY": "ABSTI",
         "ROLE": "Systems Programmer",
         "PERIOD": "2024 — PRESENT",
-        "DESCRIPTION": "Development of enterprise software solutions for financial, insurance and logistics sectors. Working with Angular, React, Java and SQL Server environments."
+        "DESCRIPTION": "Contributing to the development and maintenance of enterprise applications used in the financial, insurance, and logistics industries. Working across frontend and backend technologies with **Angular**, **React**, **Java**, **SQL Server**, REST APIs, and reporting solutions to deliver scalable and reliable business software."
       },
 
       "LEGAL": {
         "COMPANY": "Legal Management Systems",
         "ROLE": "Freelance Developer",
-        "PERIOD": "2023 — 2024",
-        "DESCRIPTION": "Design and implementation of legal document management platforms, internal dashboards and administrative tools."
+        "PERIOD": "2025 — PRESENT",
+        "DESCRIPTION": "Professional website designed and developed for a law firm, focused on building trust, showcasing legal services, and improving client communication. Features a modern and responsive interface, optimized performance, clear service presentation, and intuitive contact options to enhance the firm's online presence."
       },
 
       "PERSONAL": {
         "COMPANY": "Independent Projects",
         "ROLE": "Frontend Development Journey",
         "PERIOD": "2022 — 2023",
-        "DESCRIPTION": "Creation of experimental interfaces, API integrations, portfolio systems and modern frontend architectures."
+        "DESCRIPTION": "Designing and developing personal projects to explore modern web technologies and strengthen full-stack development skills. Focused on building responsive, high-performance applications with clean architecture, intuitive user experiences, and scalable solutions using technologies such as **Angular**, **React**, **TypeScript**, **Java**, and modern web development practices."
       }
     }
   },
