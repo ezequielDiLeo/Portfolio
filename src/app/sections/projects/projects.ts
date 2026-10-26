@@ -47,19 +47,20 @@ export class Projects implements AfterViewInit, OnDestroy {
         description: this.lang.instant('PROJECTS.ITEMS.LEXOR.DESCRIPTION'),
         details: this.lang.instant('PROJECTS.ITEMS.LEXOR.DETAILS'),
         stack: ['Angular', 'Java', 'TypeScript', 'SQL Server', 'PrimeNG'],
-        image: 'utreraC.webp',
+        image: 'utreraNos.png',
+        link: 'https://www.utrerac.com/home'
       },
       {
         id: 'MSN-002',
-        codename: 'RICKVERSE',
-        title: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.TITLE'),
-        status: 'ACTIVE',
-        year: '2024',
-        description: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DESCRIPTION'),
-        details: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DETAILS'),
-        stack: ['Angular', 'SCSS', 'REST API', 'RxJS'],
-        image: 'rymPage.webp',
-        link: 'https://rym-page.vercel.app/intro'
+        codename: 'NOVA',
+        title: this.lang.instant('PROJECTS.ITEMS.NOVA.TITLE'),
+        status: 'DEPLOYED',
+        year: '2025',
+        description: this.lang.instant('PROJECTS.ITEMS.NOVA.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.NOVA.DETAILS'),
+        stack: ['React', 'CSS', 'JavaScript', 'Responsive Design'],
+        image: 'tiendaOnline.png',
+        link: 'https://clothingcye.netlify.app/'
       },
       {
         id: 'MSN-003',
@@ -70,20 +71,20 @@ export class Projects implements AfterViewInit, OnDestroy {
         description: this.lang.instant('PROJECTS.ITEMS.STELLAR.DESCRIPTION'),
         details: this.lang.instant('PROJECTS.ITEMS.STELLAR.DETAILS'),
         stack: ['Angular', 'GSAP', 'Three.js', 'SCSS'],
-        image: 'portfolio.webp',
+        image: 'portfolio.png',
       },
       {
         id: 'MSN-004',
-        codename: 'NOVA',
-        title: this.lang.instant('PROJECTS.ITEMS.NOVA.TITLE'),
-        status: 'DEPLOYED',
-        year: '2025',
-        description: this.lang.instant('PROJECTS.ITEMS.NOVA.DESCRIPTION'),
-        details: this.lang.instant('PROJECTS.ITEMS.NOVA.DETAILS'),
-        stack: ['React', 'CSS', 'JavaScript', 'Responsive Design'],
-        image: null,
-        link: 'https://clothingcye.netlify.app/'
-      }
+        codename: 'RICKVERSE',
+        title: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.TITLE'),
+        status: 'ACTIVE',
+        year: '2024',
+        description: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DESCRIPTION'),
+        details: this.lang.instant('PROJECTS.ITEMS.RICKVERSE.DETAILS'),
+        stack: ['Angular', 'SCSS', 'REST API', 'RxJS'],
+        image: 'rymPage.webp',
+        link: 'https://rym-page.vercel.app/intro'
+      },
     ];
   });
 

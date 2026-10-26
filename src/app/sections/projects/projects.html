@@ -1,7 +1,5 @@
 <section id="projects" class="projects">
 
-  <!-- <div class="prj-stars"></div> -->
-
   <!-- HUD corners -->
   <div class="hud-corner hud-tl"></div>
   <div class="hud-corner hud-tr"></div>
@@ -37,13 +35,16 @@
           (click)="selectProject(project)"
           type="button"
         >
-          <!-- Active indicator -->
           <span class="prj-row-indicator"></span>
 
           <span class="prj-row-id">{{ project.id }}</span>
           <span class="prj-row-codename">{{ project.codename }}</span>
           <span class="prj-row-status" [style.color]="statusColor(project.status)">
-            <span class="prj-status-dot" [style.background]="statusColor(project.status)" [style.box-shadow]="'0 0 6px ' + statusColor(project.status)"></span>
+            <span
+              class="prj-status-dot"
+              [style.background]="statusColor(project.status)"
+              [style.box-shadow]="'0 0 6px ' + statusColor(project.status)"
+            ></span>
             {{ project.status }}
           </span>
           <span class="prj-row-year">{{ project.year }}</span>
@@ -55,7 +56,6 @@
         <span class="prj-footer-dot"></span>
         <span>SYS ONLINE</span>
       </div>
-
     </div>
 
     <!-- DIVIDER -->
@@ -75,19 +75,19 @@
             <span class="prj-detail-sep">/</span>
             <span class="prj-detail-codename">{{ selected().codename }}</span>
           </div>
+
           <span
             class="prj-detail-status"
             [style.color]="statusColor(selected().status)"
             [style.border-color]="statusColor(selected().status) + '44'"
             [style.box-shadow]="'0 0 12px ' + statusColor(selected().status) + '22'"
           >
-            ● {{ selected()!.status }}
+            ● {{ selected().status }}
           </span>
         </div>
 
         <!-- Image zone -->
         <div class="prj-img-zone">
-          <!-- Corner ticks -->
           <div class="img-tick img-tick--tl"></div>
           <div class="img-tick img-tick--tr"></div>
           <div class="img-tick img-tick--bl"></div>
@@ -95,16 +95,17 @@
 
           <div class="prj-img-orb orb-cyan"></div>
           <div class="prj-img-orb orb-violet"></div>
-
           <div class="prj-scanner"></div>
-          @if (selected()!.image) {
+
+          @if (selected().image) {
             <img
-              [ngSrc]="selected()!.image!"
+              [ngSrc]="selected().image!"
               width="900"
               height="600"
               class="prj-img"
-              [alt]="selected()!.title"
-              loading="lazy">
+              [alt]="selected().title"
+              loading="lazy"
+            >
           } @else {
             <div class="classified-image">
               <i class="fa-solid fa-lock"></i>
@@ -129,12 +130,22 @@
         <!-- Actions -->
         <div class="prj-actions">
           @if (selected().link) {
-            <button class="prj-btn prj-btn--primary" (click)="openLink(selected().link)" aria-label="Open project link">
+            <button
+              class="prj-btn prj-btn--primary"
+              (click)="openLink(selected().link)"
+              aria-label="Open project link"
+              type="button"
+            >
               <span>ACCESS FILE</span>
               <span class="prj-btn-arrow">→</span>
             </button>
           } @else {
-            <button class="prj-btn prj-btn--locked" disabled aria-label="Project link is classified">
+            <button
+              class="prj-btn prj-btn--locked"
+              disabled
+              aria-label="Project link is classified"
+              type="button"
+            >
               <span>◈</span>
               <span>{{ 'PROJECTS.STATUS.CLASSIFIED' | translate }}</span>
             </button>
@@ -143,7 +154,29 @@
 
       </div>
     </div>
+  </div>
 
+  <!-- ADDITIONAL PROJECTS: RESTRICTED ACCESS -->
+  <div class="prj-more">
+    <div class="prj-more-icon" aria-hidden="true">
+      <span class="prj-more-lock">◈</span>
+    </div>
+
+    <div class="prj-more-content">
+      <span class="prj-more-tag">ADDITIONAL MISSIONS // RESTRICTED</span>
+      <h3>More projects are in development</h3>
+      <p>
+        Additional projects exist within this system, but their details
+        are not yet available for public access.
+      </p>
+    </div>
+
+    <div class="prj-more-status">
+      <span class="prj-more-dot"></span>
+      <span>ACCESS RESTRICTED</span>
+    </div>
+
+    <span class="prj-more-code" aria-hidden="true">???</span>
   </div>
 
 </section>
