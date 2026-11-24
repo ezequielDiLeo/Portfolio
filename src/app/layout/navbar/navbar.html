@@ -1,80 +1,86 @@
-<nav class="navbar">
+<header class="navbar">
+  <div class="navbar__inner">
+    <a class="navbar__brand" href="#hero" aria-label="Ir al inicio" (click)="closeMenu()">
+      <span class="navbar__brand-mark">EDL</span>
+      <span class="navbar__brand-name">Ezequiel Di Leo</span>
+    </a>
 
-  <!-- SYSTEM STATUS -->
-  <div class="nav-status">
-    <span class="nav-status-dot"></span>
-    SYSTEM ONLINE
-    <span class="nav-status-section">
-      / {{ activeSection() | uppercase }}
-    </span>
+    <button
+      class="navbar__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-navigation"
+      aria-label="Abrir navegación"
+      (click)="toggleMenu()"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        @if (menuOpen()) {
+          <path d="M6 6l12 12M18 6L6 18"/>
+        } @else {
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        }
+      </svg>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="navbar__nav"
+      [class.navbar__nav--open]="menuOpen()"
+      aria-label="Navegación principal"
+    >
+      @for (item of items; track item.id) {
+        <a
+          class="navbar__link"
+          [class.navbar__link--active]="activeSection() === item.id"
+          [href]="'#' + item.id"
+          (click)="closeMenu()"
+        >
+          {{ item.label }}
+        </a>
+      }
+
+      <a
+        class="navbar__cv"
+        href="/CV-DiLeo-ES.pdf"
+        download="CV-DiLeo-ES.pdf"
+        aria-label="Descargar currículum vitae en PDF"
+      >
+        Descargar CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 3v12"/>
+          <path d="M7 10l5 5 5-5"/>
+          <path d="M5 21h14"/>
+        </svg>
+      </a>
+
+      <div class="navbar__preferences" aria-label="Preferencias de visualización">
+        <button
+          class="navbar__icon-button"
+          type="button"
+          [attr.aria-label]="theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+          (click)="toggleTheme()"
+        >
+          @if (theme() === 'dark') {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+            </svg>
+          } @else {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+            </svg>
+          }
+        </button>
+
+        <button
+          class="navbar__icon-button navbar__language"
+          type="button"
+          [attr.aria-label]="language.currentLang() === 'es' ? 'Cambiar a inglés' : 'Cambiar a español'"
+          (click)="toggleLanguage(); closeMenu()"
+        >
+          {{ language.currentLang() === 'es' ? 'ES' : 'EN' }}
+        </button>
+      </div>
+    </nav>
   </div>
-
-  <!-- NAV CORE -->
-  <div class="nav-core">
-
-    <a href="#hero"
-       class="nav-item"
-       [class.active]="activeSection() === 'hero'"
-       (click)="setActive('hero')">
-      <lucide-icon [img]="House"></lucide-icon>
-      <span class="nav-label"> {{lang.instant('NAVBAR.HOME')}}</span>
-    </a>
-
-    <a href="#about"
-       class="nav-item"
-       [class.active]="activeSection() === 'about'"
-       (click)="setActive('about')">
-      <lucide-icon [img]="User"></lucide-icon>
-      <span class="nav-label">{{lang.instant('NAVBAR.IDENTITY')}}</span>
-    </a>
-
-    <a href="#skills"
-       class="nav-item"
-       [class.active]="activeSection() === 'skills'"
-       (click)="setActive('skills')">
-      <lucide-icon [img]="Brain"></lucide-icon>
-      <span class="nav-label">{{lang.instant('NAVBAR.SKILLS')}}</span>
-    </a>
-
-    <a href="#projects"
-       class="nav-item"
-       [class.active]="activeSection() === 'projects'"
-       (click)="setActive('projects')">
-      <lucide-icon [img]="Briefcase"></lucide-icon>
-      <span class="nav-label">{{lang.instant('NAVBAR.PROJECTS')}}</span>
-    </a>
-
-    <a href="#experience"
-       class="nav-item"
-       [class.active]="activeSection() === 'experience'"
-       (click)="setActive('experience')">
-      <lucide-icon [img]="ChartNetwork"></lucide-icon>
-      <span class="nav-label">{{lang.instant('NAVBAR.EXPERIENCE')}}</span>
-    </a>
-
-    <a href="#contact"
-       class="nav-item"
-       [class.active]="activeSection() === 'contact'"
-       (click)="setActive('contact')">
-      <lucide-icon [img]="Mail"></lucide-icon>
-      <span class="nav-label">{{lang.instant('NAVBAR.CONTACT')}}</span>
-    </a>
-
-    <button class="lang-switch" (click)="lang.toggleLang()">
-  <span class="lang-code">
-    {{ lang.currentLang() === 'es' ? 'ES' : 'EN' }}
-  </span>
-
-  <span class="nav-label">
-    {{ lang.currentLang() === 'es' ? 'English' : 'Español' }}
-  </span>
-</button>
-
-  </div>
-
-  <!-- ENERGY BAR -->
-  <div class="nav-energy">
-    <div class="energy-fill" [attr.data-section]="activeSection()"></div>
-  </div>
-
-</nav>
+</header>

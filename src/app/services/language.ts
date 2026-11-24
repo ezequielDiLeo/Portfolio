@@ -14,9 +14,14 @@ export class LanguageService {
 
     this.translate.addLangs(['es', 'en']);
 
-    const saved = localStorage.getItem('lang') as 'es' | 'en' | null;
+    const saved = typeof localStorage === 'undefined'
+      ? null
+      : localStorage.getItem('lang') as 'es' | 'en' | null;
 
-    const browserLang = navigator.language.startsWith('es') ? 'es' : 'en';
+    const browserLang =
+      typeof navigator !== 'undefined' && navigator.language.startsWith('es')
+        ? 'es'
+        : 'en';
 
     const lang = saved ?? browserLang;
 
@@ -29,7 +34,9 @@ export class LanguageService {
 
     this.translate.use(lang);
 
-    localStorage.setItem('lang', lang);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('lang', lang);
+    }
   }
 
   instant(key: string) {

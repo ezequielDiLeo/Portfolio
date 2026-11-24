@@ -1,56 +1,64 @@
-<section id="experience" class="experience">
-  <div class="exp-bg"></div>
-  <div class="exp-container">
+<section id="experience" class="section experience" aria-labelledby="experience-title">
+  <div class="container">
+    <header class="section-heading">
+      <span class="section-kicker">Trayectoria</span>
+      <h2 id="experience-title">Experiencia y formación</h2>
+      <p>
+        Construcción de producto de punta a punta, desde interfaces empresariales
+        hasta servicios backend y reportería crítica.
+      </p>
+    </header>
 
-    <!-- TITLE -->
-    <div class="exp-title">
-      <span class="exp-eyebrow"> {{ 'EXPERIENCE.EYEBROW' | translate }}</span>
-      <h2> {{ 'EXPERIENCE.TITLE' | translate }} </h2>
-      <p> {{ 'EXPERIENCE.SUBTITLE' | translate }} </p>
-    </div>
-
-    <!-- TIMELINE SYSTEM -->
-    <div class="exp-timeline">
-
-      <div class="exp-line">
-        <div class="exp-line-fill"></div>
-      </div>
-
-      <div class="exp-list">
-
-        @for(exp of experiences(); track exp.company){
-          <div class="exp-item">
-            <div class="exp-dot"></div>
-            <div class="exp-side">
-              <div class="exp-content">
-
-                <div class="exp-header">
-                  <span class="exp-id">
-                    {{ 'EXPERIENCE.MISSION' | translate }}_00{{ $index + 1 }}
-                  </span>
-                  <span class="exp-status">
-                    {{ 'EXPERIENCE.ACTIVE' | translate }}
-                  </span>
-                </div>
-                <h3 class="exp-company">{{ exp.company | translate}}</h3>
-                <div class="exp-role">
-                  {{ exp.role | translate}}
-                </div>
-                <div class="exp-period">
-                  {{ exp.period | translate}}
-                </div>
-                <p class="exp-desc">
-                  {{ exp.desc | translate}}
-                </p>
-              </div>
-            </div>
+    <div class="experience__grid">
+      <article class="experience-card experience-card--main">
+        <div class="experience-card__header">
+          <div>
+            <span class="experience-card__label">Experiencia profesional</span>
+            <h3>Desarrollador Full-Stack / Frontend</h3>
           </div>
-        }
+          <span class="experience-card__period">+2 años</span>
+        </div>
 
-      </div>
+        <ul class="experience-card__list">
+          <li>
+            <span aria-hidden="true">01</span>
+            <p>
+              Desarrollo y mantenimiento de aplicaciones web empresariales en Angular,
+              modularizando componentes reutilizables y optimizando flujos complejos de usuario.
+            </p>
+          </li>
+          <li>
+            <span aria-hidden="true">02</span>
+            <p>
+              Implementación de lógica de negocio y servicios backend en Java/Spring
+              con persistencia mediante Hibernate y consultas SQL optimizadas.
+            </p>
+          </li>
+          <li>
+            <span aria-hidden="true">03</span>
+            <p>
+              Diseño y generación de reportes empresariales críticos con iReport,
+              integrados al ecosistema productivo y orientados a resultados operativos.
+            </p>
+          </li>
+        </ul>
+      </article>
 
+      <article class="experience-card experience-card--education">
+        <span class="experience-card__label">Formación académica</span>
+        <div class="education-card__main">
+          <div class="education-mark" aria-hidden="true">UTN</div>
+          <div>
+            <h3>Tecnicatura Universitaria en Programación</h3>
+            <p>Universidad Tecnológica Nacional · UTN</p>
+            <span class="education-status">Cursando</span>
+          </div>
+        </div>
+        <div class="courses-block">
+          <span class="courses-block__label">Formación complementaria</span>
+          <p>Variedad de cursos técnicos completados, orientados a tecnologías de desarrollo y prácticas profesionales.</p>
+        </div>
+      </article>
     </div>
-
   </div>
-
 </section>

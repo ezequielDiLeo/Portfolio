@@ -1,11 +1,2 @@
-@if (loading) {
-  <app-intro (done)="onLoaderDone()" />
-} @else {
-
-  <app-space-background />
-
-  <app-navbar />
-
-  <router-outlet></router-outlet>
-
-}
+<app-navbar />
+<router-outlet />
