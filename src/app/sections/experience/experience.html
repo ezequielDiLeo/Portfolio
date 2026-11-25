@@ -1,56 +1,52 @@
-<section id="experience" class="experience">
-  <div class="exp-bg"></div>
-  <div class="exp-container">
+<section id="experience" class="section experience" aria-labelledby="experience-title">
+  <div class="container">
+    <header class="section-heading">
+      <span class="section-kicker">{{ 'EXPERIENCE.KICKER' | translate }}</span>
+      <h2 id="experience-title">{{ 'EXPERIENCE.SECTION_TITLE' | translate }}</h2>
+      <p>{{ 'EXPERIENCE.INTRO' | translate }}</p>
+    </header>
 
-    <!-- TITLE -->
-    <div class="exp-title">
-      <span class="exp-eyebrow"> {{ 'EXPERIENCE.EYEBROW' | translate }}</span>
-      <h2> {{ 'EXPERIENCE.TITLE' | translate }} </h2>
-      <p> {{ 'EXPERIENCE.SUBTITLE' | translate }} </p>
-    </div>
-
-    <!-- TIMELINE SYSTEM -->
-    <div class="exp-timeline">
-
-      <div class="exp-line">
-        <div class="exp-line-fill"></div>
-      </div>
-
-      <div class="exp-list">
-
-        @for(exp of experiences(); track exp.company){
-          <div class="exp-item">
-            <div class="exp-dot"></div>
-            <div class="exp-side">
-              <div class="exp-content">
-
-                <div class="exp-header">
-                  <span class="exp-id">
-                    {{ 'EXPERIENCE.MISSION' | translate }}_00{{ $index + 1 }}
-                  </span>
-                  <span class="exp-status">
-                    {{ 'EXPERIENCE.ACTIVE' | translate }}
-                  </span>
-                </div>
-                <h3 class="exp-company">{{ exp.company | translate}}</h3>
-                <div class="exp-role">
-                  {{ exp.role | translate}}
-                </div>
-                <div class="exp-period">
-                  {{ exp.period | translate}}
-                </div>
-                <p class="exp-desc">
-                  {{ exp.desc | translate}}
-                </p>
-              </div>
-            </div>
+    <div class="experience__grid">
+      <article class="experience-card experience-card--main">
+        <div class="experience-card__header">
+          <div>
+            <span class="experience-card__label">{{ 'EXPERIENCE.PROFESSIONAL' | translate }}</span>
+            <h3>{{ 'EXPERIENCE.ROLE' | translate }}</h3>
           </div>
-        }
+          <span class="experience-card__period">{{ 'EXPERIENCE.YEARS' | translate }}</span>
+        </div>
 
-      </div>
+        <ul class="experience-card__list">
+          <li>
+            <span aria-hidden="true">01</span>
+            <p>{{ 'EXPERIENCE.ITEM_1' | translate }}</p>
+          </li>
+          <li>
+            <span aria-hidden="true">02</span>
+            <p>{{ 'EXPERIENCE.ITEM_2' | translate }}</p>
+          </li>
+          <li>
+            <span aria-hidden="true">03</span>
+            <p>{{ 'EXPERIENCE.ITEM_3' | translate }}</p>
+          </li>
+        </ul>
+      </article>
 
+      <article class="experience-card experience-card--education">
+        <span class="experience-card__label">{{ 'EXPERIENCE.EDUCATION' | translate }}</span>
+        <div class="education-card__main">
+          <div class="education-mark" aria-hidden="true">UTN</div>
+          <div>
+            <h3>{{ 'EXPERIENCE.DEGREE' | translate }}</h3>
+            <p>{{ 'EXPERIENCE.UNIVERSITY' | translate }}</p>
+            <span class="education-status">{{ 'EXPERIENCE.STUDYING' | translate }}</span>
+          </div>
+        </div>
+        <div class="courses-block">
+          <span class="courses-block__label">{{ 'EXPERIENCE.COURSES' | translate }}</span>
+          <p>{{ 'EXPERIENCE.COURSES_DESCRIPTION' | translate }}</p>
+        </div>
+      </article>
     </div>
-
   </div>
-
 </section>

@@ -1,0 +1,45 @@
+<section id="freelance" class="section freelance" aria-labelledby="freelance-title">
+  <div class="container">
+    <header class="section-heading">
+      <span class="section-kicker">{{ 'FREELANCE.KICKER' | translate }}</span>
+      <h2 id="freelance-title">{{ 'FREELANCE.TITLE' | translate }}</h2>
+      <p>{{ 'FREELANCE.INTRO' | translate }}</p>
+    </header>
+
+    <div class="freelance__grid">
+      @for (project of projects; track project.name) {
+        <article class="freelance-card">
+          <div class="freelance-card__media">
+            <img
+              [src]="project.image"
+              [alt]="'FREELANCE.' + project.translationKey + '_ALT' | translate"
+              width="800"
+              height="500"
+              loading="lazy"
+            >
+            <div class="freelance-card__top">
+              <span>{{ project.index }}</span>
+              <span class="freelance-card__status">{{ 'FREELANCE.LIVE' | translate }}</span>
+            </div>
+          </div>
+          <h3>{{ project.name }}</h3>
+          <p class="freelance-card__description">{{ ('FREELANCE.' + project.translationKey + '_DESCRIPTION') | translate }}</p>
+          <div class="freelance-card__footer">
+            <span>{{ ('FREELANCE.' + project.translationKey + '_SERVICE') | translate }}</span>
+            <a
+              [href]="project.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="'FREELANCE.OPEN_PROJECT' | translate: { name: project.name }"
+            >
+              {{ 'FREELANCE.VISIT' | translate }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M7 17L17 7M7 7h10v10"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

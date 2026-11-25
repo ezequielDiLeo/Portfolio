@@ -1,0 +1,226 @@
+:host {
+  display: block;
+}
+
+.stack {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--surface-muted);
+}
+
+.stack__matrix {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 24px);
+  overflow: hidden;
+  padding-inline: clamp(12px, 4vw, 56px);
+  pointer-events: none;
+}
+
+.stack__matrix-column {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  color: #39ff6a;
+  opacity: 0.2;
+  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+}
+
+.stack__matrix-track {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 200%;
+  display: flex;
+  flex-direction: column;
+  animation: matrix-fall 24s linear infinite;
+}
+
+.stack__matrix-column:nth-child(2) .stack__matrix-track {
+  animation-duration: 31s;
+  animation-delay: -11s;
+}
+
+.stack__matrix-column:nth-child(3) .stack__matrix-track {
+  animation-duration: 27s;
+  animation-delay: -19s;
+}
+
+.stack__matrix-column:nth-child(4) .stack__matrix-track {
+  animation-duration: 34s;
+  animation-delay: -6s;
+}
+
+.stack__matrix-column:nth-child(5) .stack__matrix-track {
+  animation-duration: 22s;
+  animation-delay: -15s;
+}
+
+.stack__matrix-column:nth-child(6) .stack__matrix-track {
+  animation-duration: 29s;
+  animation-delay: -23s;
+}
+
+.stack__matrix-column:nth-child(7) .stack__matrix-track {
+  animation-duration: 33s;
+  animation-delay: -9s;
+}
+
+.stack__matrix-column:nth-child(8) .stack__matrix-track {
+  animation-duration: 26s;
+  animation-delay: -17s;
+}
+
+.stack__matrix-column:nth-child(9) .stack__matrix-track {
+  animation-duration: 35s;
+  animation-delay: -28s;
+}
+
+.stack__matrix-column:nth-child(10) .stack__matrix-track {
+  animation-duration: 23s;
+  animation-delay: -12s;
+}
+
+.stack__matrix-column:nth-child(11) .stack__matrix-track {
+  animation-duration: 30s;
+  animation-delay: -21s;
+}
+
+.stack__matrix-column:nth-child(12) .stack__matrix-track {
+  animation-duration: 25s;
+  animation-delay: -4s;
+}
+
+.stack__matrix-copy {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-block: 14px;
+}
+
+.stack__matrix-copy span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.stack__matrix-copy span:first-child {
+  color: #b9ffcf;
+  text-shadow: 0 0 8px rgba(57, 255, 106, 0.75);
+}
+
+.stack > .container {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes matrix-fall {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.stack__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stack-card {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  background: var(--surface-glass);
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.stack-card:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-elevated);
+}
+
+.stack-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stack-card__header > span {
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.stack-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.stack-card > p {
+  min-height: 48px;
+  margin: 14px 0 18px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.stack-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack-card li {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding-inline: 10px;
+  color: var(--text-strong);
+  background: var(--surface-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+@media (max-width: 720px) {
+  .stack__matrix {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 8px;
+    padding-inline: 16px;
+  }
+
+  .stack__matrix-column:nth-child(n + 9) {
+    display: none;
+  }
+
+  .stack__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-card {
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack__matrix-track {
+    animation: none;
+  }
+}

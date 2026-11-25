@@ -1,159 +1,104 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
-import gsap from 'gsap';
-import MotionPathPlugin from 'gsap/MotionPathPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import emailjs from '@emailjs/browser';
+import { Component, OnDestroy, signal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
-
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, FormsModule, TranslatePipe],
+  standalone: true,
+  imports: [TranslatePipe],
   templateUrl: './contact.html',
-  styleUrl: './contact.scss',
+  styleUrl: './contact.scss'
 })
-export class Contact implements AfterViewInit {
+export class Contact implements OnDestroy {
+  readonly email = 'ezemr@1996@gmail.com';
+  readonly copied = signal(false);
+  readonly submissionStatus = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
+  private resetTimer: ReturnType<typeof setTimeout> | null = null;
 
-  name = '';
-  email = '';
-  message = '';
+  async sendMessage(event: Event): Promise<void> {
+    event.preventDefault();
 
-  sending = false;
-  sent = false;
-  error = false;
+    const form = event.currentTarget;
 
-  constructor(
-    private el: ElementRef
-  ) {}
+    if (!(form instanceof HTMLFormElement) || !form.reportValidity()) {
+      return;
+    }
 
-  ngAfterViewInit(): void {
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
 
-    const ctx = gsap.context(() => {
+    if (
+      typeof name !== 'string' ||
+      typeof email !== 'string' ||
+      typeof message !== 'string' ||
+      !name.trim() ||
+      !email.trim() ||
+      !message.trim()
+    ) {
+      this.submissionStatus.set('error');
+      return;
+    }
 
-      // Entrada izquierda
-      gsap.from('.signal-panel', {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      });
-
-      // Entrada centro
-      gsap.from('.contact-terminal', {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        delay: .2,
-        ease: 'power3.out'
-      });
-
-      // Entrada derecha
-      gsap.from('.status-panel', {
-        x: 100,
-        opacity: 0,
-        duration: 1,
-        delay: .4,
-        ease: 'power3.out'
-      });
-
-      // Radar girando
-      gsap.to('.radar', {
-        rotate: 360,
-        duration: 20,
-        repeat: -1,
-        ease: 'none'
-      });
-
-      // Scanner terminal
-      const terminal =
-        this.el.nativeElement.querySelector(
-          '.contact-terminal'
-        );
-
-      if (terminal) {
-        gsap.to('.terminal-scanner', {
-          y: terminal.clientHeight - 4,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: 'none'
-        });
-
-      }
-
-      // Parpadeo panel status
-      gsap.to('.status-box', {
-        boxShadow:
-          '0 0 25px rgba(0,212,255,.2)',
-        duration: 1.5,
-        stagger: .3,
-        repeat: -1,
-        yoyo: true
-
-      });
-
-      // Hover automático links
-      gsap.to('.signal-links a', {
-        boxShadow:
-          '0 0 25px rgba(0,212,255,.15)',
-        duration: 1.5,
-        stagger: .2,
-        repeat: -1,
-        yoyo: true
-      });
-
-    }, this.el.nativeElement);
-
-  }
-
-  async sendMessage() {
-
-    if (!this.name || !this.email || !this.message) return;
-
-    this.sending = true;
-    this.sent = false;
-    this.error = false;
+    this.submissionStatus.set('sending');
 
     try {
-      console.log('Enviando email...');
-      const response = emailjs.send(
-        'service_pn1fv9v',
-        'template_4r4zbtb',
-        {
-          from_name: this.name,
-          from_email: this.email,
-          message: this.message,
-        },
-        '7MN3wCU9KJHYMXmvk'
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Contact API returned status ${response.status}.`);
+      }
+
+      form.reset();
+      this.submissionStatus.set('success');
+    } catch (error) {
+      console.error(
+        'Contact form submission failed.',
+        error instanceof Error ? error.message : 'Unknown contact API error.'
       );
-console.log('OK', response);
-      this.sent = true;
-
-      // limpiar form
-      this.name = '';
-      this.email = '';
-      this.message = '';
-
-      // opcional: reset visual después de unos segundos
-      setTimeout(() => {
-        this.sent = false;
-      }, 4000);
-
-    } catch (err) {
-      console.error('ERROR EMAILJS', err);
-      this.error = true;
-
-      setTimeout(() => {
-        this.error = false;
-      }, 4000);
-
-    } finally {
-      console.log('FINALIZADO');
-      this.sending = false;
+      this.submissionStatus.set('error');
     }
   }
 
+  clearSubmissionStatus(): void {
+    if (this.submissionStatus() !== 'sending') {
+      this.submissionStatus.set('idle');
+    }
+  }
+
+  async copyEmail(): Promise<void> {
+    if (!navigator.clipboard) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(this.email);
+      this.copied.set(true);
+
+      if (this.resetTimer) {
+        clearTimeout(this.resetTimer);
+      }
+
+      this.resetTimer = setTimeout(() => {
+        this.copied.set(false);
+        this.resetTimer = null;
+      }, 2500);
+    } catch {
+      this.copied.set(false);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.resetTimer) {
+      clearTimeout(this.resetTimer);
+    }
+  }
 }

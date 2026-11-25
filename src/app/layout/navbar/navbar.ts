@@ -1,62 +1,126 @@
-import { AfterViewInit, Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
-  LucideAngularModule,
-  House,
-  User,
-  Brain,
-  Briefcase,
-  ChartNetwork,
-  Mail
-} from 'lucide-angular';
+  Component,
+  inject,
+  OnDestroy,
+  afterNextRender,
+  signal
+} from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language';
+
+interface NavItem {
+  readonly labelKey: string;
+  readonly id: string;
+}
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [TranslatePipe],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss',
+  styleUrl: './navbar.scss'
 })
-export class Navbar implements AfterViewInit {
+export class Navbar implements OnDestroy {
+  readonly language = inject(LanguageService);
+  readonly theme = signal<'dark' | 'light'>('dark');
 
-  // Language
-  lang = inject(LanguageService);
+  readonly items: readonly NavItem[] = [
+    { labelKey: 'NAVBAR.ENGINEERING', id: 'engineering' },
+    { labelKey: 'NAVBAR.EXPERIENCE', id: 'experience' },
+    { labelKey: 'NAVBAR.STACK', id: 'stack' },
+    { labelKey: 'NAVBAR.FREELANCE', id: 'freelance' },
+    { labelKey: 'NAVBAR.CONTACT', id: 'contact' }
+  ];
 
-  // Icons
-  readonly House = House;
-  readonly User = User;
-  readonly Brain = Brain;
-  readonly Briefcase = Briefcase;
-  readonly ChartNetwork = ChartNetwork;
-  readonly Mail = Mail;
+  readonly activeSection = signal<string>('hero');
+  readonly menuOpen = signal<boolean>(false);
 
-  activeSection = signal<string>('hero');
+  private readonly sectionIds = [
+    'hero',
+    'engineering',
+    'experience',
+    'stack',
+    'freelance',
+    'contact'
+  ];
 
-  setActive(section: string) {
-    this.activeSection.set(section);
+  private observer: IntersectionObserver | null = null;
+
+  constructor() {
+    afterNextRender(() => {
+      this.initializeTheme();
+      this.initializeObserver();
+    });
   }
 
-  ngAfterViewInit(): void {
+  private initializeTheme(): void {
+    if (typeof localStorage === 'undefined') {
+      return;
+    }
 
-    const sections = document.querySelectorAll(
-      '#hero, #about, #skills, #projects, #experience, #contact'
+    const savedTheme = localStorage.getItem('theme');
+    const nextTheme = savedTheme === 'light' ? 'light' : 'dark';
+    this.applyTheme(nextTheme);
+  }
+
+  toggleTheme(): void {
+    this.applyTheme(this.theme() === 'dark' ? 'light' : 'dark');
+  }
+
+  toggleLanguage(): void {
+    this.language.toggleLang();
+  }
+
+  private applyTheme(theme: 'dark' | 'light'): void {
+    this.theme.set(theme);
+    document.documentElement.dataset['theme'] = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      'content',
+      theme === 'dark' ? '#0b0f19' : '#f3f7fb'
     );
+    localStorage.setItem('theme', theme);
+  }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.activeSection.set(entry.target.id);
-          }
-        });
+  private initializeObserver(): void {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    this.observer = new IntersectionObserver(
+      entries => {
+        const visibleEntry = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) {
+          this.activeSection.set(visibleEntry.target.id);
+        }
       },
       {
-        rootMargin: '-35% 0px -35% 0px',
-        threshold: 0.1
+        rootMargin: '-20% 0px -65% 0px',
+        threshold: [0.05, 0.25, 0.5]
       }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    this.sectionIds.forEach(id => {
+      const section = document.getElementById(id);
+
+      if (section) {
+        this.observer?.observe(section);
+      }
+    });
+  }
+
+  toggleMenu(): void {
+    this.menuOpen.update(open => !open);
+  }
+
+  closeMenu(): void {
+    this.menuOpen.set(false);
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
   }
 }

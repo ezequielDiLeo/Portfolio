@@ -1,164 +1,128 @@
-<section id="contact" class="contact">
-
-  <div class="contact-bg"></div>
-
-  <div class="contact-container">
-
-    <div class="contact-title">
-
-      <span class="contact-eyebrow">
-        {{ 'CONTACT.EYEBROW' | translate }}
-      </span>
-
-      <h2>{{ 'CONTACT.TITLE' | translate }}</h2>
-
-      <p>
-        {{ 'CONTACT.SUBTITLE' | translate }}
-      </p>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-      <div class="contact-panel signal-panel">
-
-        <div class="radar">
-          <div class="radar-sweep"></div>
-          <div class="radar-ring ring-1"></div>
-          <div class="radar-ring ring-2"></div>
-          <div class="radar-ring ring-3"></div>
-          <div class="radar-core"></div>
-        </div>
-
-
-        <div class="signal-links">
-
-          <a href="https://github.com/ezequielDiLeo" target="_blank">
-            <i class="fa-brands fa-github"></i>
-            <span>GitHub</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/ezequiel-di-leo/" target="_blank">
-            <i class="fa-brands fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
-
-          <a href="mailto:ezemr1996@gmail.com">
-            <i class="fa-regular fa-envelope"></i>
-            <span>Email</span>
-          </a>
-
-          <a href="https://wa.me/5491139528929" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>WhatsApp</span>
-          </a>
-
-        </div>
-
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__panel">
+      <div>
+        <span class="section-kicker">{{ 'CONTACT_SECTION.KICKER' | translate }}</span>
+        <h2 id="contact-title">{{ 'CONTACT_SECTION.TITLE' | translate }}</h2>
+        <p>{{ 'CONTACT_SECTION.INTRO' | translate }}</p>
       </div>
 
+      <div class="contact__actions">
+        <button
+          class="contact__copy"
+          type="button"
+          [class.contact__copy--copied]="copied()"
+          [attr.aria-label]="copied() ? ('CONTACT_SECTION.COPIED_LABEL' | translate) : ('CONTACT_SECTION.COPY_LABEL' | translate)"
+          (click)="copyEmail()"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            @if (copied()) {
+              <path d="M5 12l4 4L19 6"/>
+            } @else {
+              <rect x="8" y="8" width="11" height="11" rx="2"/>
+              <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>
+            }
+          </svg>
+          {{ copied() ? ('CONTACT_SECTION.COPIED' | translate) : ('CONTACT_SECTION.COPY' | translate) }}
+        </button>
 
-      <div class="contact-terminal">
-
-        <div class="terminal-header">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="contact__links" [attr.aria-label]="'CONTACT_SECTION.LINKS' | translate">
+          <a
+            href="https://www.linkedin.com/in/ezequiel-di-leo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/ezequielDiLeo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </div>
+      </div>
+    </div>
 
+    <div class="contact__form-panel">
+      <div class="contact__form-heading">
+        <h3>{{ 'CONTACT_SECTION.FORM_TITLE' | translate }}</h3>
+        <p>{{ 'CONTACT_SECTION.FORM_INTRO' | translate }}</p>
+      </div>
 
-        <div class="terminal-scanner"></div>
+      <form class="contact__form" (submit)="sendMessage($event)" (input)="clearSubmissionStatus()">
+        <fieldset class="contact__form-fields" [disabled]="submissionStatus() === 'sending'">
+          <div class="contact__form-grid">
+            <label>
+              <span>{{ 'CONTACT_SECTION.NAME_LABEL' | translate }}</span>
+              <input
+                type="text"
+                name="name"
+                autocomplete="name"
+                [placeholder]="'CONTACT_SECTION.NAME_PLACEHOLDER' | translate"
+                minlength="2"
+                maxlength="100"
+                required
+              >
+            </label>
 
+            <label>
+              <span>{{ 'CONTACT_SECTION.EMAIL_LABEL' | translate }}</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                [placeholder]="'CONTACT_SECTION.EMAIL_PLACEHOLDER' | translate"
+                maxlength="254"
+                required
+              >
+            </label>
 
-        <form class="terminal-form" (ngSubmit)="sendMessage()">
+            <label class="contact__message-field">
+              <span>{{ 'CONTACT_SECTION.MESSAGE_LABEL' | translate }}</span>
+              <textarea
+                name="message"
+                rows="5"
+                [placeholder]="'CONTACT_SECTION.MESSAGE_PLACEHOLDER' | translate"
+                minlength="10"
+                maxlength="5000"
+                required
+              ></textarea>
+            </label>
+          </div>
 
-          <label>> {{ 'CONTACT.FORM.NAME_LABEL' | translate }}</label>
-
-          <input
-            type="text"
-            [(ngModel)]="name"
-            name="name"
-            [placeholder]="'CONTACT.FORM.NAME_PLACEHOLDER' | translate">
-
-
-          <label>> {{ 'CONTACT.FORM.EMAIL_LABEL' | translate }}</label>
-
-          <input
-            type="email"
-            [(ngModel)]="email"
-            name="email"
-            [placeholder]="'CONTACT.FORM.EMAIL_PLACEHOLDER' | translate">
-
-
-          <label>> {{ 'CONTACT.FORM.MESSAGE_LABEL' | translate }}</label>
-
-          <textarea
-            rows="6"
-            [(ngModel)]="message"
-            name="message"
-            [placeholder]="'CONTACT.FORM.MESSAGE_PLACEHOLDER' | translate">
-          </textarea>
-
-
-          <button type="submit" [disabled]="sending">
-
-            @if (!sending) {
-              {{ 'CONTACT.FORM.SEND' | translate }}
+          <button class="contact__send" type="submit">
+            @if (submissionStatus() === 'sending') {
+              {{ 'CONTACT_SECTION.SENDING' | translate }}
+            } @else {
+              {{ 'CONTACT_SECTION.SEND' | translate }}
             }
-
-            @if (sending) {
-              {{ 'CONTACT.FORM.SENDING' | translate }}
-            }
-
           </button>
+        </fieldset>
 
-
-          @if (sent) {
-            <div class="terminal-success">
-              ✔ {{ 'CONTACT.SUCCESS' | translate }}
-            </div>
+        <p
+          class="contact__form-status"
+          [class.contact__form-status--success]="submissionStatus() === 'success'"
+          [class.contact__form-status--error]="submissionStatus() === 'error'"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          @if (submissionStatus() === 'success') {
+            {{ 'CONTACT_SECTION.SEND_SUCCESS' | translate }}
+          } @else if (submissionStatus() === 'error') {
+            {{ 'CONTACT_SECTION.SEND_ERROR' | translate }}
           }
-
-
-          @if (error) {
-            <div class="terminal-error">
-              ✖ {{ 'CONTACT.ERROR' | translate }}
-            </div>
-          }
-
-        </form>
-
-      </div>
-
-
-      <div class="contact-panel status-panel">
-
-        <div class="status-box">
-          <span>{{ 'CONTACT.STATUS.NETWORK' | translate }}</span>
-          <strong>{{ 'CONTACT.STATUS.ONLINE' | translate }}</strong>
-        </div>
-
-        <div class="status-box">
-          <span>{{ 'CONTACT.STATUS.LATENCY' | translate }}</span>
-          <strong>23ms</strong>
-        </div>
-
-        <div class="status-box">
-          <span>{{ 'CONTACT.STATUS.LOCATION' | translate }}</span>
-          <strong>{{ 'CONTACT.STATUS.COUNTRY' | translate }}</strong>
-        </div>
-
-        <div class="status-box">
-          <span>{{ 'CONTACT.STATUS.RESPONSE' | translate }}</span>
-          <strong>&lt; 24H</strong>
-        </div>
-
-      </div>
-
-
+        </p>
+      </form>
     </div>
-
   </div>
-
 </section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© 2026 Ezequiel Di Leo</p>
+    <p>Full-Stack · Frontend · Angular</p>
+  </div>
+</footer>

@@ -1,0 +1,131 @@
+:host {
+  display: block;
+}
+
+.freelance__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.freelance-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.freelance-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.freelance-card__top {
+  position: absolute;
+  z-index: 2;
+  inset: 12px 12px auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.freelance-card__media {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-inset);
+}
+
+.freelance-card__media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, var(--surface-glass));
+  content: '';
+  pointer-events: none;
+}
+
+.freelance-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: saturate(0.82) contrast(1.05);
+  transition: transform 500ms cubic-bezier(.2,.75,.25,1), filter 300ms ease;
+}
+
+.freelance-card:hover .freelance-card__media img {
+  filter: saturate(1) contrast(1.05);
+}
+
+.freelance-card__description{
+  padding: 10px 0;
+}
+
+.freelance-card__status {
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.freelance-card h3 {
+  margin: 22px 20px 12px;
+  font-size: 1.55rem;
+  letter-spacing: -0.035em;
+}
+
+.freelance-card > p {
+  margin: 0 20px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.freelance-card__footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding: 16px 20px 20px;
+}
+
+.freelance-card__footer > span {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+}
+
+.freelance-card__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.freelance-card__footer a:hover {
+  color: var(--cyan);
+}
+
+.freelance-card__footer svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 900px) {
+  .freelance__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .freelance-card {
+    min-height: 260px;
+  }
+}

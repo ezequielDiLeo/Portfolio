@@ -1,0 +1,155 @@
+<section id="engineering" class="section engineering" aria-labelledby="engineering-title">
+  <div class="container">
+    <header class="section-heading">
+      <span class="section-kicker">{{ 'ENGINEERING.KICKER' | translate }}</span>
+      <h2 id="engineering-title">{{ 'ENGINEERING.TITLE' | translate }}</h2>
+      <p>{{ 'ENGINEERING.INTRO' | translate }}</p>
+    </header>
+
+    <article
+      class="project project--featured"
+      aria-labelledby="formflow-title"
+      (pointermove)="updatePointer($event)"
+    >
+      <div class="project__topline">
+        <span>{{ 'ENGINEERING.FEATURED' | translate }}</span>
+        <span class="project__status">{{ 'ENGINEERING.DEMO_STATUS' | translate }}</span>
+      </div>
+
+      <div class="project__featured-grid">
+        <div class="project__main">
+          <h3 id="formflow-title">FormFlow</h3>
+          <p class="project__summary">{{ 'ENGINEERING.FORMFLOW_SUMMARY' | translate }}</p>
+
+          <div class="project__problem">
+            <h4>{{ 'ENGINEERING.PROBLEM' | translate }}</h4>
+            <p>{{ 'ENGINEERING.FORMFLOW_PROBLEM' | translate }}</p>
+          </div>
+
+          <div class="project__architecture">
+            <h4>{{ 'ENGINEERING.ARCHITECTURE' | translate }}</h4>
+            <p>{{ 'ENGINEERING.FORMFLOW_ARCHITECTURE' | translate }}</p>
+          </div>
+
+          <div class="project__stack" [attr.aria-label]="'ENGINEERING.FORMFLOW_STACK' | translate">
+            <span class="tag">Angular</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Signals</span>
+            <span class="tag">SCSS</span>
+            <span class="tag">Dynamic Schemas</span>
+          </div>
+
+          <div class="project__actions">
+            <a
+              class="btn btn--primary"
+              href="https://canvasformflow.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </a>
+            <a
+              class="btn btn--secondary"
+              href="https://github.com/ezequielDiLeo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ 'ENGINEERING.GITHUB_CODE' | translate }}
+            </a>
+          </div>
+        </div>
+
+        <div class="project__preview" [attr.aria-label]="'ENGINEERING.FORMFLOW_STACK' | translate">
+          <div class="project__screenshot">
+            <img
+              src="/formFlow.png"
+              alt="Vista previa visual del proyecto FormFlow"
+              width="1200"
+              height="630"
+              loading="lazy"
+            >
+          </div>
+          <div class="preview-window">
+            <div class="preview-window__bar">
+              <span></span><span></span><span></span>
+              <b>formflow.canvas</b>
+            </div>
+            <div class="preview-window__body">
+              <div class="preview-sidebar">
+                <span>FIELD_01</span>
+                <span>FIELD_02</span>
+                <span>FIELD_03</span>
+              </div>
+              <div class="preview-canvas">
+                <div class="preview-field">
+                  <small>Nombre completo</small>
+                  <b>Input</b>
+                </div>
+                <div class="preview-field preview-field--selected">
+                  <small>Correo electrónico</small>
+                  <b>Email</b>
+                </div>
+                <div class="preview-field">
+                  <small>Mensaje</small>
+                  <b>Textarea</b>
+                </div>
+              </div>
+              <div class="preview-properties">
+                <small>PROPERTIES</small>
+                <span>required <b>true</b></span>
+                <span>label <b>email</b></span>
+                <span>width <b>100%</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article
+      class="project project--secondary"
+      aria-labelledby="telemetry-title"
+      (pointermove)="updatePointer($event)"
+    >
+      <div class="project__topline">
+        <span>{{ 'ENGINEERING.FULLSTACK' | translate }}</span>
+        <span class="project__status">{{ 'ENGINEERING.REST_STATUS' | translate }}</span>
+      </div>
+
+      <div class="project__secondary-grid">
+        <div>
+          <h3 id="telemetry-title">{{ 'ENGINEERING.TELEMETRY_TITLE' | translate }}</h3>
+          <p class="project__summary">{{ 'ENGINEERING.TELEMETRY_SUMMARY' | translate }}</p>
+        </div>
+
+        <div class="project__problem">
+          <h4>{{ 'ENGINEERING.PROBLEM' | translate }}</h4>
+          <p>{{ 'ENGINEERING.TELEMETRY_PROBLEM' | translate }}</p>
+        </div>
+
+        <div class="project__architecture">
+          <h4>{{ 'ENGINEERING.ARCHITECTURE' | translate }}</h4>
+          <p>{{ 'ENGINEERING.TELEMETRY_ARCHITECTURE' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="project__footer">
+        <div class="project__stack" [attr.aria-label]="'ENGINEERING.TELEMETRY_STACK' | translate">
+          <span class="tag">NestJS</span>
+          <span class="tag">Prisma ORM</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Angular</span>
+          <span class="tag">REST</span>
+        </div>
+        <a
+          class="btn btn--secondary"
+          href="https://github.com/ezequielDiLeo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ 'ENGINEERING.GITHUB_ARCHITECTURE' | translate }}
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
