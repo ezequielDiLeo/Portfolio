@@ -1,47 +1,37 @@
 <section id="engineering" class="section engineering" aria-labelledby="engineering-title">
   <div class="container">
     <header class="section-heading">
-      <span class="section-kicker">Ingeniería aplicada</span>
-      <h2 id="engineering-title">Casos de estudio seleccionados</h2>
-      <p>
-        Productos pensados desde el problema hasta la implementación:
-        decisiones técnicas explícitas, arquitectura mantenible y foco en la experiencia real.
-      </p>
+      <span class="section-kicker">{{ 'ENGINEERING.KICKER' | translate }}</span>
+      <h2 id="engineering-title">{{ 'ENGINEERING.TITLE' | translate }}</h2>
+      <p>{{ 'ENGINEERING.INTRO' | translate }}</p>
     </header>
 
-    <article class="project project--featured" aria-labelledby="formflow-title">
+    <article
+      class="project project--featured"
+      aria-labelledby="formflow-title"
+      (pointermove)="updatePointer($event)"
+    >
       <div class="project__topline">
-        <span>Proyecto insignia</span>
-        <span class="project__status">Producción / Demo</span>
+        <span>{{ 'ENGINEERING.FEATURED' | translate }}</span>
+        <span class="project__status">{{ 'ENGINEERING.DEMO_STATUS' | translate }}</span>
       </div>
 
       <div class="project__featured-grid">
         <div class="project__main">
           <h3 id="formflow-title">FormFlow</h3>
-          <p class="project__summary">
-            Constructor visual dinámico de formularios web con canvas interactivo,
-            editor de propiedades en tiempo real y vista previa de landing page.
-          </p>
+          <p class="project__summary">{{ 'ENGINEERING.FORMFLOW_SUMMARY' | translate }}</p>
 
           <div class="project__problem">
-            <h4>Problema</h4>
-            <p>
-              Necesitaba una edición fluida de estructuras dinámicas sin acoplar el canvas,
-              la configuración y la vista previa a una lógica compartida difícil de evolucionar.
-            </p>
+            <h4>{{ 'ENGINEERING.PROBLEM' | translate }}</h4>
+            <p>{{ 'ENGINEERING.FORMFLOW_PROBLEM' | translate }}</p>
           </div>
 
           <div class="project__architecture">
-            <h4>Arquitectura y decisiones técnicas</h4>
-            <p>
-              Desacoplé el estado del formulario del renderizado del canvas mediante Angular Signals:
-              las mutaciones actualizan el esquema serializable y los consumidores derivados responden
-              solo a los cambios relevantes. La serialización dinámica permite reconstruir campos,
-              propiedades y vista previa sin re-renders innecesarios ni dependencia de una interfaz rígida.
-            </p>
+            <h4>{{ 'ENGINEERING.ARCHITECTURE' | translate }}</h4>
+            <p>{{ 'ENGINEERING.FORMFLOW_ARCHITECTURE' | translate }}</p>
           </div>
 
-          <div class="project__stack" aria-label="Tecnologías utilizadas en FormFlow">
+          <div class="project__stack" [attr.aria-label]="'ENGINEERING.FORMFLOW_STACK' | translate">
             <span class="tag">Angular</span>
             <span class="tag">TypeScript</span>
             <span class="tag">Signals</span>
@@ -64,12 +54,12 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Código en GitHub
+              {{ 'ENGINEERING.GITHUB_CODE' | translate }}
             </a>
           </div>
         </div>
 
-        <div class="project__preview" aria-label="Diagrama técnico de FormFlow">
+        <div class="project__preview" [attr.aria-label]="'ENGINEERING.FORMFLOW_STACK' | translate">
           <div class="project__screenshot">
             <img
               src="/formFlow.png"
@@ -116,42 +106,35 @@
       </div>
     </article>
 
-    <article class="project project--secondary" aria-labelledby="telemetry-title">
+    <article
+      class="project project--secondary"
+      aria-labelledby="telemetry-title"
+      (pointermove)="updatePointer($event)"
+    >
       <div class="project__topline">
-        <span>Proyecto full-stack</span>
-        <span class="project__status">Arquitectura REST</span>
+        <span>{{ 'ENGINEERING.FULLSTACK' | translate }}</span>
+        <span class="project__status">{{ 'ENGINEERING.REST_STATUS' | translate }}</span>
       </div>
 
       <div class="project__secondary-grid">
         <div>
-          <h3 id="telemetry-title">Plataforma de Telemetría &amp; API REST</h3>
-          <p class="project__summary">
-            Sistema full-stack para ingesta, almacenamiento y visualización de métricas
-            de servidores en tiempo real.
-          </p>
+          <h3 id="telemetry-title">{{ 'ENGINEERING.TELEMETRY_TITLE' | translate }}</h3>
+          <p class="project__summary">{{ 'ENGINEERING.TELEMETRY_SUMMARY' | translate }}</p>
         </div>
 
         <div class="project__problem">
-          <h4>Problema</h4>
-          <p>
-            Consolidar métricas distribuidas con validaciones consistentes y una interfaz
-            reactiva capaz de representar cambios sin acoplar UI y persistencia.
-          </p>
+          <h4>{{ 'ENGINEERING.PROBLEM' | translate }}</h4>
+          <p>{{ 'ENGINEERING.TELEMETRY_PROBLEM' | translate }}</p>
         </div>
 
         <div class="project__architecture">
-          <h4>Arquitectura y decisiones técnicas</h4>
-          <p>
-            Backend desacoplado en NestJS con Prisma ORM sobre PostgreSQL.
-            DTOs estrictos validan los eventos de ingesta y endpoints RESTful separan
-            contratos de dominio de presentación. Angular consume la API y actualiza
-            el dashboard reactivo con estados derivados y fuentes de datos claras.
-          </p>
+          <h4>{{ 'ENGINEERING.ARCHITECTURE' | translate }}</h4>
+          <p>{{ 'ENGINEERING.TELEMETRY_ARCHITECTURE' | translate }}</p>
         </div>
       </div>
 
       <div class="project__footer">
-        <div class="project__stack" aria-label="Tecnologías utilizadas en la plataforma de telemetría">
+        <div class="project__stack" [attr.aria-label]="'ENGINEERING.TELEMETRY_STACK' | translate">
           <span class="tag">NestJS</span>
           <span class="tag">Prisma ORM</span>
           <span class="tag">PostgreSQL</span>
@@ -164,7 +147,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Ver Arquitectura en GitHub
+          {{ 'ENGINEERING.GITHUB_ARCHITECTURE' | translate }}
         </a>
       </div>
     </article>

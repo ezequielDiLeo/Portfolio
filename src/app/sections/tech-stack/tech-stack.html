@@ -1,12 +1,24 @@
 <section id="stack" class="section stack" aria-labelledby="stack-title">
+  <div class="stack__matrix" aria-hidden="true">
+    @for (column of matrixColumns; track $index) {
+      <div class="stack__matrix-column">
+        <div class="stack__matrix-track">
+          @for (copy of [0, 1]; track copy) {
+            <div class="stack__matrix-copy">
+              @for (glyph of column; track $index) {
+                <span>{{ glyph }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
   <div class="container">
     <header class="section-heading">
-      <span class="section-kicker">Sistema técnico</span>
-      <h2 id="stack-title">Stack tecnológico</h2>
-      <p>
-        Tecnologías que aplico para construir interfaces, APIs y modelos de datos
-        coherentes con los requisitos reales del producto.
-      </p>
+      <span class="section-kicker">{{ 'STACK_SECTION.KICKER' | translate }}</span>
+      <h2 id="stack-title">{{ 'STACK_SECTION.TITLE' | translate }}</h2>
+      <p>{{ 'STACK_SECTION.INTRO' | translate }}</p>
     </header>
 
     <div class="stack__grid">
@@ -14,9 +26,9 @@
         <article class="stack-card">
           <div class="stack-card__header">
             <span>{{ group.index }}</span>
-            <h3>{{ group.title }}</h3>
+            <h3>{{ group.titleKey | translate }}</h3>
           </div>
-          <p>{{ group.description }}</p>
+          <p>{{ group.descriptionKey | translate }}</p>
           <ul>
             @for (technology of group.technologies; track technology) {
               <li>{{ technology }}</li>

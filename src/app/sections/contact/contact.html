@@ -2,12 +2,9 @@
   <div class="container">
     <div class="contact__panel">
       <div>
-        <span class="section-kicker">Contacto directo</span>
-        <h2 id="contact-title">¿Conversamos sobre un rol o proyecto?</h2>
-        <p>
-          Estoy disponible para desafíos Full-Stack y Frontend donde el código,
-          la arquitectura y el impacto de producto sean parte central del trabajo.
-        </p>
+        <span class="section-kicker">{{ 'CONTACT_SECTION.KICKER' | translate }}</span>
+        <h2 id="contact-title">{{ 'CONTACT_SECTION.TITLE' | translate }}</h2>
+        <p>{{ 'CONTACT_SECTION.INTRO' | translate }}</p>
       </div>
 
       <div class="contact__actions">
@@ -15,7 +12,7 @@
           class="contact__copy"
           type="button"
           [class.contact__copy--copied]="copied()"
-          [attr.aria-label]="copied() ? 'Email copiado al portapapeles' : 'Copiar email al portapapeles'"
+          [attr.aria-label]="copied() ? ('CONTACT_SECTION.COPIED_LABEL' | translate) : ('CONTACT_SECTION.COPY_LABEL' | translate)"
           (click)="copyEmail()"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -26,10 +23,10 @@
               <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>
             }
           </svg>
-          {{ copied() ? '¡Email copiado!' : 'Copiar email' }}
+          {{ copied() ? ('CONTACT_SECTION.COPIED' | translate) : ('CONTACT_SECTION.COPY' | translate) }}
         </button>
 
-        <div class="contact__links" aria-label="Enlaces profesionales">
+        <div class="contact__links" [attr.aria-label]="'CONTACT_SECTION.LINKS' | translate">
           <a
             href="https://www.linkedin.com/in/ezequiel-di-leo/"
             target="_blank"
@@ -46,6 +43,79 @@
           </a>
         </div>
       </div>
+    </div>
+
+    <div class="contact__form-panel">
+      <div class="contact__form-heading">
+        <h3>{{ 'CONTACT_SECTION.FORM_TITLE' | translate }}</h3>
+        <p>{{ 'CONTACT_SECTION.FORM_INTRO' | translate }}</p>
+      </div>
+
+      <form class="contact__form" (submit)="sendMessage($event)" (input)="clearSubmissionStatus()">
+        <fieldset class="contact__form-fields" [disabled]="submissionStatus() === 'sending'">
+          <div class="contact__form-grid">
+            <label>
+              <span>{{ 'CONTACT_SECTION.NAME_LABEL' | translate }}</span>
+              <input
+                type="text"
+                name="name"
+                autocomplete="name"
+                [placeholder]="'CONTACT_SECTION.NAME_PLACEHOLDER' | translate"
+                minlength="2"
+                maxlength="100"
+                required
+              >
+            </label>
+
+            <label>
+              <span>{{ 'CONTACT_SECTION.EMAIL_LABEL' | translate }}</span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                [placeholder]="'CONTACT_SECTION.EMAIL_PLACEHOLDER' | translate"
+                maxlength="254"
+                required
+              >
+            </label>
+
+            <label class="contact__message-field">
+              <span>{{ 'CONTACT_SECTION.MESSAGE_LABEL' | translate }}</span>
+              <textarea
+                name="message"
+                rows="5"
+                [placeholder]="'CONTACT_SECTION.MESSAGE_PLACEHOLDER' | translate"
+                minlength="10"
+                maxlength="5000"
+                required
+              ></textarea>
+            </label>
+          </div>
+
+          <button class="contact__send" type="submit">
+            @if (submissionStatus() === 'sending') {
+              {{ 'CONTACT_SECTION.SENDING' | translate }}
+            } @else {
+              {{ 'CONTACT_SECTION.SEND' | translate }}
+            }
+          </button>
+        </fieldset>
+
+        <p
+          class="contact__form-status"
+          [class.contact__form-status--success]="submissionStatus() === 'success'"
+          [class.contact__form-status--error]="submissionStatus() === 'error'"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          @if (submissionStatus() === 'success') {
+            {{ 'CONTACT_SECTION.SEND_SUCCESS' | translate }}
+          } @else if (submissionStatus() === 'error') {
+            {{ 'CONTACT_SECTION.SEND_ERROR' | translate }}
+          }
+        </p>
+      </form>
     </div>
   </div>
 </section>

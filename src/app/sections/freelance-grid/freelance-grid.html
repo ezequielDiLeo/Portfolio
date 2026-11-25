@@ -1,12 +1,9 @@
 <section id="freelance" class="section freelance" aria-labelledby="freelance-title">
   <div class="container">
     <header class="section-heading">
-      <span class="section-kicker">Entregas reales</span>
-      <h2 id="freelance-title">Proyectos freelance &amp; clientes</h2>
-      <p>
-        Sitios y catálogos llevados a producción, trabajando diseño, implementación,
-        rendimiento y necesidades comerciales concretas.
-      </p>
+      <span class="section-kicker">{{ 'FREELANCE.KICKER' | translate }}</span>
+      <h2 id="freelance-title">{{ 'FREELANCE.TITLE' | translate }}</h2>
+      <p>{{ 'FREELANCE.INTRO' | translate }}</p>
     </header>
 
     <div class="freelance__grid">
@@ -15,27 +12,27 @@
           <div class="freelance-card__media">
             <img
               [src]="project.image"
-              [alt]="project.imageAlt"
+              [alt]="'FREELANCE.' + project.translationKey + '_ALT' | translate"
               width="800"
               height="500"
               loading="lazy"
             >
             <div class="freelance-card__top">
               <span>{{ project.index }}</span>
-              <span class="freelance-card__status">En producción</span>
+              <span class="freelance-card__status">{{ 'FREELANCE.LIVE' | translate }}</span>
             </div>
           </div>
           <h3>{{ project.name }}</h3>
-          <p class="freelance-card__description">{{ project.description }}</p>
+          <p class="freelance-card__description">{{ ('FREELANCE.' + project.translationKey + '_DESCRIPTION') | translate }}</p>
           <div class="freelance-card__footer">
-            <span>{{ project.service }}</span>
+            <span>{{ ('FREELANCE.' + project.translationKey + '_SERVICE') | translate }}</span>
             <a
               [href]="project.url"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Abrir proyecto {{ project.name }}"
+              [attr.aria-label]="'FREELANCE.OPEN_PROJECT' | translate: { name: project.name }"
             >
-              Visitar sitio
+              {{ 'FREELANCE.VISIT' | translate }}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M7 17L17 7M7 7h10v10"/>
               </svg>

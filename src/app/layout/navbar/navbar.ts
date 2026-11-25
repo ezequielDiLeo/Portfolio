@@ -5,16 +5,18 @@ import {
   afterNextRender,
   signal
 } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language';
 
 interface NavItem {
-  readonly label: string;
+  readonly labelKey: string;
   readonly id: string;
 }
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
+  imports: [TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
@@ -23,11 +25,11 @@ export class Navbar implements OnDestroy {
   readonly theme = signal<'dark' | 'light'>('dark');
 
   readonly items: readonly NavItem[] = [
-    { label: 'Ingeniería', id: 'engineering' },
-    { label: 'Experiencia', id: 'experience' },
-    { label: 'Stack', id: 'stack' },
-    { label: 'Freelance', id: 'freelance' },
-    { label: 'Contacto', id: 'contact' }
+    { labelKey: 'NAVBAR.ENGINEERING', id: 'engineering' },
+    { labelKey: 'NAVBAR.EXPERIENCE', id: 'experience' },
+    { labelKey: 'NAVBAR.STACK', id: 'stack' },
+    { labelKey: 'NAVBAR.FREELANCE', id: 'freelance' },
+    { labelKey: 'NAVBAR.CONTACT', id: 'contact' }
   ];
 
   readonly activeSection = signal<string>('hero');
@@ -72,6 +74,11 @@ export class Navbar implements OnDestroy {
   private applyTheme(theme: 'dark' | 'light'): void {
     this.theme.set(theme);
     document.documentElement.dataset['theme'] = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      'content',
+      theme === 'dark' ? '#0b0f19' : '#f3f7fb'
+    );
     localStorage.setItem('theme', theme);
   }
 

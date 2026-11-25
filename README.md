@@ -36,6 +36,23 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Contact form
+
+The contact form sends messages through the Vercel serverless function in `api/contact.ts`.
+Configure these environment variables in the Vercel project settings for Preview and Production:
+
+- `EMAILJS_SERVICE_ID`
+- `EMAILJS_TEMPLATE_ID`
+- `EMAILJS_PUBLIC_KEY`
+- `EMAILJS_PRIVATE_KEY`
+- `CONTACT_EMAIL`
+
+Keep the private key in Vercel environment settings; never commit it. For local development,
+copy `.env.example` to `.env.local` and fill in the values, then run `npx vercel dev` so the
+frontend and `/api/contact` function are served together. `.env.local` is ignored by Git.
+
+The EmailJS template should use `to_email`, `from_name`, `from_email`, `reply_to`, and `message`.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:

@@ -1,62 +1,50 @@
 <section id="experience" class="section experience" aria-labelledby="experience-title">
   <div class="container">
     <header class="section-heading">
-      <span class="section-kicker">Trayectoria</span>
-      <h2 id="experience-title">Experiencia y formación</h2>
-      <p>
-        Construcción de producto de punta a punta, desde interfaces empresariales
-        hasta servicios backend y reportería crítica.
-      </p>
+      <span class="section-kicker">{{ 'EXPERIENCE.KICKER' | translate }}</span>
+      <h2 id="experience-title">{{ 'EXPERIENCE.SECTION_TITLE' | translate }}</h2>
+      <p>{{ 'EXPERIENCE.INTRO' | translate }}</p>
     </header>
 
     <div class="experience__grid">
       <article class="experience-card experience-card--main">
         <div class="experience-card__header">
           <div>
-            <span class="experience-card__label">Experiencia profesional</span>
-            <h3>Desarrollador Full-Stack / Frontend</h3>
+            <span class="experience-card__label">{{ 'EXPERIENCE.PROFESSIONAL' | translate }}</span>
+            <h3>{{ 'EXPERIENCE.ROLE' | translate }}</h3>
           </div>
-          <span class="experience-card__period">+2 años</span>
+          <span class="experience-card__period">{{ 'EXPERIENCE.YEARS' | translate }}</span>
         </div>
 
         <ul class="experience-card__list">
           <li>
             <span aria-hidden="true">01</span>
-            <p>
-              Desarrollo y mantenimiento de aplicaciones web empresariales en Angular,
-              modularizando componentes reutilizables y optimizando flujos complejos de usuario.
-            </p>
+            <p>{{ 'EXPERIENCE.ITEM_1' | translate }}</p>
           </li>
           <li>
             <span aria-hidden="true">02</span>
-            <p>
-              Implementación de lógica de negocio y servicios backend en Java/Spring
-              con persistencia mediante Hibernate y consultas SQL optimizadas.
-            </p>
+            <p>{{ 'EXPERIENCE.ITEM_2' | translate }}</p>
           </li>
           <li>
             <span aria-hidden="true">03</span>
-            <p>
-              Diseño y generación de reportes empresariales críticos con iReport,
-              integrados al ecosistema productivo y orientados a resultados operativos.
-            </p>
+            <p>{{ 'EXPERIENCE.ITEM_3' | translate }}</p>
           </li>
         </ul>
       </article>
 
       <article class="experience-card experience-card--education">
-        <span class="experience-card__label">Formación académica</span>
+        <span class="experience-card__label">{{ 'EXPERIENCE.EDUCATION' | translate }}</span>
         <div class="education-card__main">
           <div class="education-mark" aria-hidden="true">UTN</div>
           <div>
-            <h3>Tecnicatura Universitaria en Programación</h3>
-            <p>Universidad Tecnológica Nacional · UTN</p>
-            <span class="education-status">Cursando</span>
+            <h3>{{ 'EXPERIENCE.DEGREE' | translate }}</h3>
+            <p>{{ 'EXPERIENCE.UNIVERSITY' | translate }}</p>
+            <span class="education-status">{{ 'EXPERIENCE.STUDYING' | translate }}</span>
           </div>
         </div>
         <div class="courses-block">
-          <span class="courses-block__label">Formación complementaria</span>
-          <p>Variedad de cursos técnicos completados, orientados a tecnologías de desarrollo y prácticas profesionales.</p>
+          <span class="courses-block__label">{{ 'EXPERIENCE.COURSES' | translate }}</span>
+          <p>{{ 'EXPERIENCE.COURSES_DESCRIPTION' | translate }}</p>
         </div>
       </article>
     </div>

@@ -9,6 +9,12 @@
   --primary: #3b82f6;
   --cyan: #00e5ff;
   --success: #22c55e;
+  --success-text: #bbf7d0;
+  --success-surface: rgba(34, 197, 94, 0.055);
+  --surface-glass: rgba(19, 23, 34, 0.88);
+  --surface-inset: #101521;
+  --surface-muted: rgba(255, 255, 255, 0.025);
+  --text-strong: #dbeafe;
   --error: #f87171;
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
@@ -27,6 +33,12 @@
   --border-hover: rgba(37, 99, 235, 0.38);
   --text: #0f172a;
   --text-secondary: #526172;
+  --success-text: #166534;
+  --success-surface: rgba(34, 197, 94, 0.09);
+  --surface-glass: rgba(255, 255, 255, 0.92);
+  --surface-inset: #f8fafc;
+  --surface-muted: rgba(15, 23, 42, 0.035);
+  --text-strong: #1e3a8a;
   --shadow-card: 0 18px 50px rgba(15, 23, 42, 0.10);
 }
 
@@ -176,7 +188,7 @@ img {
 
 .btn--secondary {
   border: 1px solid var(--border);
-  background: rgba(19, 23, 34, 0.78);
+  background: var(--surface-glass);
   color: var(--text);
 }
 
@@ -197,9 +209,9 @@ img {
   min-height: 28px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--surface-muted);
   padding: 0 10px;
-  color: #cbd5e1;
+  color: var(--text-strong);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   line-height: 1;
