@@ -1,6 +1,6 @@
 <header class="navbar">
   <div class="navbar__inner">
-    <a class="navbar__brand" href="#hero" aria-label="Ir al inicio" (click)="closeMenu()">
+    <a class="navbar__brand" href="#hero" [attr.aria-label]="'NAVBAR.HOME' | translate" (click)="closeMenu()">
       <span class="navbar__brand-mark">EDL</span>
       <span class="navbar__brand-name">Ezequiel Di Leo</span>
     </a>
@@ -10,7 +10,7 @@
       type="button"
       [attr.aria-expanded]="menuOpen()"
       aria-controls="primary-navigation"
-      aria-label="Abrir navegación"
+      [attr.aria-label]="'NAVBAR.MENU' | translate"
       (click)="toggleMenu()"
     >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -26,7 +26,7 @@
       id="primary-navigation"
       class="navbar__nav"
       [class.navbar__nav--open]="menuOpen()"
-      aria-label="Navegación principal"
+      [attr.aria-label]="'NAVBAR.NAVIGATION' | translate"
     >
       @for (item of items; track item.id) {
         <a
@@ -35,7 +35,7 @@
           [href]="'#' + item.id"
           (click)="closeMenu()"
         >
-          {{ item.label }}
+          {{ item.labelKey | translate }}
         </a>
       }
 
@@ -43,9 +43,9 @@
         class="navbar__cv"
         href="/CV-DiLeo-ES.pdf"
         download="CV-DiLeo-ES.pdf"
-        aria-label="Descargar currículum vitae en PDF"
+        [attr.aria-label]="'NAVBAR.DOWNLOAD_CV' | translate"
       >
-        Descargar CV
+        {{ 'NAVBAR.DOWNLOAD_CV' | translate }}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 3v12"/>
           <path d="M7 10l5 5 5-5"/>
@@ -53,11 +53,11 @@
         </svg>
       </a>
 
-      <div class="navbar__preferences" aria-label="Preferencias de visualización">
+      <div class="navbar__preferences" [attr.aria-label]="'NAVBAR.PREFERENCES' | translate">
         <button
           class="navbar__icon-button"
           type="button"
-          [attr.aria-label]="theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+          [attr.aria-label]="theme() === 'dark' ? ('NAVBAR.LIGHT_THEME' | translate) : ('NAVBAR.DARK_THEME' | translate)"
           (click)="toggleTheme()"
         >
           @if (theme() === 'dark') {
@@ -75,7 +75,7 @@
         <button
           class="navbar__icon-button navbar__language"
           type="button"
-          [attr.aria-label]="language.currentLang() === 'es' ? 'Cambiar a inglés' : 'Cambiar a español'"
+          [attr.aria-label]="language.currentLang() === 'es' ? ('NAVBAR.ENGLISH' | translate) : ('NAVBAR.SPANISH' | translate)"
           (click)="toggleLanguage(); closeMenu()"
         >
           {{ language.currentLang() === 'es' ? 'ES' : 'EN' }}

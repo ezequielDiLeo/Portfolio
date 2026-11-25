@@ -3,10 +3,12 @@
 }
 
 .engineering {
-  background: linear-gradient(180deg, transparent, rgba(19, 23, 34, 0.32));
+  background: linear-gradient(180deg, transparent, var(--surface-muted));
 }
 
 .project {
+  position: relative;
+  isolation: isolate;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -14,8 +16,29 @@
   transition: border-color 180ms ease;
 }
 
+.project::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(59, 130, 246, 0.14),
+    transparent 76%
+  );
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
 .project:hover {
   border-color: var(--border-hover);
+}
+
+.project:hover::before,
+.project:focus-within::before {
+  opacity: 1;
 }
 
 .project--featured {
@@ -61,7 +84,7 @@
 
 .project h4 {
   margin: 0 0 7px;
-  color: #dbeafe;
+  color: var(--text-strong);
   font-family: var(--font-mono);
   font-size: 0.76rem;
   letter-spacing: 0.02em;
@@ -70,7 +93,7 @@
 .project__summary {
   max-width: 620px;
   margin: 16px 0 26px;
-  color: #cbd5e1;
+  color: var(--text-strong);
   font-size: 1.04rem;
   line-height: 1.65;
 }
@@ -110,7 +133,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 10px;
-  background: #0d111b;
+  background: var(--surface-inset);
 }
 
 .project__screenshot {
@@ -119,7 +142,7 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   margin-bottom: 10px;
-  background: #111620;
+  background: var(--surface-inset);
 }
 
 .project__screenshot img {
@@ -133,9 +156,9 @@
 
 .preview-window {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #111620;
+  background: var(--surface-inset);
 }
 
 .preview-window__bar {
@@ -202,7 +225,7 @@
   border: 1px solid var(--border);
   border-radius: 5px;
   padding: 9px;
-  background: rgba(19, 23, 34, 0.95);
+  background: var(--surface-glass);
 }
 
 .preview-field--selected {
@@ -220,7 +243,7 @@
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 5px;
-  color: #cbd5e1;
+  color: var(--text-strong);
   font-size: 0.58rem;
   font-weight: 500;
 }
@@ -316,5 +339,17 @@
 
   .project__footer .btn {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project::before {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .project::before {
+    display: none;
   }
 }
