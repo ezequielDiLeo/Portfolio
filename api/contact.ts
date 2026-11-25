@@ -124,11 +124,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       })
     });
 
-    if (!emailResponse.ok) {
-      console.error(`EmailJS rejected contact form request with status ${emailResponse.status}.`);
-      res.status(502).json({ error: 'email_delivery_failed' });
-      return;
-    }
+  if (!emailResponse.ok) {
+    const errorDetails = await emailResponse.text();
+
+    console.error('EmailJS error:', {
+      status: emailResponse.status,
+      details: errorDetails
+    });
+
+    res.status(502).json({ error: 'email_delivery_failed' });
+    return;
+  }
 
     res.status(200).json({ success: true });
   } catch (error) {
