@@ -4,9 +4,10 @@ import { TranslatePipe } from '@ngx-translate/core';
 interface FreelanceProject {
   readonly index: string;
   readonly name: string;
-  readonly url: string;
+  readonly url?: string;
   readonly image: string;
   readonly translationKey: string;
+  readonly statusKey?: string;
 }
 
 @Component({
@@ -38,6 +39,13 @@ export class FreelanceGrid {
       url: 'https://clothingcye.netlify.app',
       image: '/tiendaOnline.png',
       translationKey: 'CLOTHING'
+    },
+    {
+      index: '04',
+      name: 'Investors Trust',
+      image: '/investors-trust.png',
+      translationKey: 'INVESTORS_TRUST',
+      statusKey: 'CLIENT_WORK'
     }
   ];
 }
