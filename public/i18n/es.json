@@ -59,8 +59,9 @@
   "FREELANCE": {
     "KICKER": "Entregas reales",
     "TITLE": "Proyectos freelance y clientes",
-    "INTRO": "Sitios y catálogos llevados a producción, trabajando diseño, implementación, rendimiento y necesidades comerciales concretas.",
+    "INTRO": "Sitios públicos y catálogos llevados a producción, además de aplicaciones internas (backoffice) desarrolladas para equipos empresariales.",
     "LIVE": "En producción",
+    "CLIENT_WORK": "Trabajo para cliente",
     "VISIT": "Visitar sitio",
     "OPEN_PROJECT": "Abrir proyecto {{ name }}",
     "FEARLESS_ALT": "Vista previa del sitio comercial Fearless Salon",
@@ -71,7 +72,10 @@
     "UTRERA_SERVICE": "Desarrollo + Rendimiento",
     "CLOTHING_ALT": "Vista previa del catálogo digital Clothing C&E",
     "CLOTHING_DESCRIPTION": "Catálogo digital con interfaz comercial responsive orientada a una experiencia mobile-first.",
-    "CLOTHING_SERVICE": "Frontend + Responsive"
+    "CLOTHING_SERVICE": "Frontend + Responsive",
+    "INVESTORS_TRUST_ALT": "Captura del sitio corporativo Investors Trust",
+    "INVESTORS_TRUST_DESCRIPTION": "Desarrollo de interfaz y componentes web para el ecosistema digital de la empresa.",
+    "INVESTORS_TRUST_SERVICE": "Desarrollo web + UI"
   },
 
   "CONTACT_SECTION": {
@@ -100,7 +104,7 @@
   "HERO": {
     "BADGE": "Disponible para desafíos Full-Stack / Frontend",
     "ROLE": "Desarrollador Full-Stack y Frontend",
-    "TECHNOLOGIES": "Angular, TypeScript, Java/Spring y Node/NestJS",
+    "TECHNOLOGIES": "Angular, TypeScript, Java/Spring y NestJS",
     "CASE_STUDIES": "Ver casos de estudio",
     "DOWNLOAD_CV": "Descargar CV (PDF)",
     "CURRENTLY": "Actualmente",
@@ -113,7 +117,7 @@
     "LINKEDIN": "Abrir perfil de LinkedIn",
     "BADGE": "Disponible para desafíos Full-Stack / Frontend",
     "SUBTITLE": "Desplegando interfaces modernas en el universo digital",
-    "DESCRIPTION": "Más de 2 años construyendo interfaces escalables, arquitectura frontend modular y servicios backend robustos en producción. Enfocado en código mantenible, rendimiento y resolución real de problemas de negocio.",
+    "DESCRIPTION": "+2 años desarrollando aplicaciones empresariales y productos digitales con Angular y Java. Transformo procesos complejos en interfaces mantenibles, APIs claras y soluciones listas para producción.",
     "STATS": {
       "STATUS": "ESTADO",
       "STATUS_VALUE": "ACTIVO",
@@ -241,13 +245,13 @@
   "EXPERIENCE": {
     "KICKER": "Trayectoria",
     "SECTION_TITLE": "Experiencia y formación",
-    "INTRO": "Construcción de producto de punta a punta, desde interfaces empresariales hasta servicios backend y reportería crítica.",
+    "INTRO": "Desarrollo de productos empresariales de punta a punta: interfaces complejas, APIs, persistencia y reportes críticos.",
     "PROFESSIONAL": "Experiencia profesional",
     "ROLE": "Desarrollador Full-Stack / Frontend",
     "YEARS": "+2 años",
-    "ITEM_1": "Desarrollo y mantenimiento de aplicaciones web empresariales en Angular, modularizando componentes reutilizables y optimizando flujos complejos de usuario.",
-    "ITEM_2": "Implementación de lógica de negocio y servicios backend en Java/Spring con persistencia mediante Hibernate y consultas SQL optimizadas.",
-    "ITEM_3": "Diseño y generación de reportes empresariales críticos con iReport, integrados al ecosistema productivo y orientados a resultados operativos.",
+    "ITEM_1": "Desarrollo aplicaciones web empresariales en Angular, creando componentes reutilizables y simplificando flujos operativos complejos.",
+    "ITEM_2": "Implemento reglas de negocio y APIs en Java/Spring, integrando Hibernate y consultas SQL para operaciones confiables.",
+    "ITEM_3": "Diseño reportes empresariales críticos con iReport y los integro en sistemas productivos para mejorar el acceso a información.",
     "EDUCATION": "Formación académica",
     "DEGREE": "Tecnicatura Universitaria en Programación",
     "UNIVERSITY": "Universidad Tecnológica Nacional · UTN",

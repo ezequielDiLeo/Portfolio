@@ -19,24 +19,28 @@
             >
             <div class="freelance-card__top">
               <span>{{ project.index }}</span>
-              <span class="freelance-card__status">{{ 'FREELANCE.LIVE' | translate }}</span>
+              <span class="freelance-card__status">
+                {{ (project.statusKey ? 'FREELANCE.' + project.statusKey : 'FREELANCE.LIVE') | translate }}
+              </span>
             </div>
           </div>
           <h3>{{ project.name }}</h3>
           <p class="freelance-card__description">{{ ('FREELANCE.' + project.translationKey + '_DESCRIPTION') | translate }}</p>
           <div class="freelance-card__footer">
             <span>{{ ('FREELANCE.' + project.translationKey + '_SERVICE') | translate }}</span>
-            <a
-              [href]="project.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              [attr.aria-label]="'FREELANCE.OPEN_PROJECT' | translate: { name: project.name }"
-            >
-              {{ 'FREELANCE.VISIT' | translate }}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M7 17L17 7M7 7h10v10"/>
-              </svg>
-            </a>
+            @if (project.url) {
+              <a
+                [href]="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="'FREELANCE.OPEN_PROJECT' | translate: { name: project.name }"
+              >
+                {{ 'FREELANCE.VISIT' | translate }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </a>
+            }
           </div>
         </article>
       }
